@@ -1,7 +1,7 @@
 <h2 align="center">Omicron: A semantically-driven language generation system</h2>
 
-###### [Dr. Tomek Stralkowski](https://faculty.rpi.edu/node/36316) | [Dr. Hui Su](https://cisl.rpi.edu/people/faculty/hui-su) | [Albert Chang](https://cisl.rpi.edu/people/students/albert-chang) | [Ivan Leon](https://ivanleon.net)
-###### [CISL@RPI](https://cisl.rpi.edu/)
+###### [Dr. Tomek Stralkowski](https://faculty.rpi.edu/node/36316 "Dr. Tomek Strzalkowski") | [Dr. Hui Su](https://cisl.rpi.edu/people/faculty/hui-su "Dr. Hui Su") | [Albert Chang](https://cisl.rpi.edu/people/students/albert-chang "Albert Chang") | [Ivan Leon](https://ivanleon.net "Ivan Leon")
+###### [CISL@RPI](https://cisl.rpi.edu/ "CISL")
 
 Omicron is a semantically-driven language generation system that focuses on collaborative dialog domains such as teaching.  
  
