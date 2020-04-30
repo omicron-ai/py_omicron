@@ -1,9 +1,22 @@
-## Omicron NLG
+<h2 align="center">Omicron: A semantically-driven language generation system</h2>
+
 ###### CISL@RPI 
+Omicron is a semantically-driven language generation system that focuses on collaborative dialog domains such as teaching.  
+ 
+Omicron is an ongoing project with Dr. Tomek Strzalkowski, Dr. Hui Su, and Albert Cheng. 
 
+## Contributing
 
----
-#### References
+lorem ipsum
+
+## Running Omicron
+
+lorem ipsum
+
+## LICENSE
+lorem ipsum
+
+### References
 ```bibtex
 @inproceedings{qi2020stanza,
     title={Stanza: A {Python} Natural Language Processing Toolkit for Many Human Languages},
