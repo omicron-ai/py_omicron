@@ -1,0 +1,156 @@
+Turn: 0
+    text: Hi!
+    representation: (0) -> greeting(others)
+    topics: ['Hi!']
+Turn: 1
+    text: Hi there.
+    representation: (1) -> greeting(others)
+    topics: []
+Turn: 2
+    text: How are you?
+    representation: (1) -> greeting(others)
+    topics: ['you']
+Turn: 3
+    text: I'm wondering if you can help me figure out why something I ordered hasn't arrived yet.
+    representation: (1) -> yes_no_question(order_detail)
+    topics: ['I', 'you', 'something']
+Turn: 4
+    text: Yes!
+    representation: (0) -> positive_answer(order_detail)
+    topics: []
+Turn: 5
+    text: Can you give me your name?
+    representation: (0) -> elicitation(name)
+    topics: ['I', 'name']
+Turn: 6
+    text: My name is NAMESLOTU.
+    representation: (1) -> provide(name)
+    topics: ['name']
+Turn: 7
+    text: And what can I call you?
+    representation: (1) -> elicitation(name)
+    topics: ['I', 'you']
+Turn: 8
+    text: My name is NAMESLOTA.
+    representation: (0) -> provide(name)
+    topics: ['name']
+Turn: 9
+    text: All right.
+    representation: (1) -> hold(others)
+    topics: []
+Turn: 10
+    text: Thank you for helping me.
+    representation: (1) -> thanking(others)
+    topics: ['you', 'I']
+Turn: 11
+    text: Were you able to find my order information?
+    representation: (1) -> yes_no_question(order_detail)
+    topics: ['you', 'order', 'information']
+Turn: 12
+    text: "Yes, I just need you to confirm the credit card on file for me."
+    representation: (0) -> elicitation(card_info)
+    topics: ['I', 'you', 'credit', 'card', 'file']
+Turn: 13
+    text: "Okay, let me find it."
+    representation: (1) -> hold(others)
+    topics: ['I', 'it']
+Turn: 14
+    text: Just a moment.
+    representation: (1) -> hold(others)
+    topics: ['moment']
+Turn: 15
+    text: Here: NUMSLOT
+    representation: (1) -> provide(card_num)
+    topics: ['NUMSLOT']
+Turn: 16
+    text: amazing.
+    representation: (0) -> hold(others)
+    topics: []
+Turn: 17
+    text: what is the name and billing address on the card?
+    representation: (0) -> elicitation(name)
+    topics: ['name', 'billing', 'address', 'card']
+Turn: 18
+    text: "Hello, I think I got disconnected for a second."
+    representation: (1) -> hold(others)
+    topics: ['I']
+Turn: 19
+    text: Are you still there Mr. NAMESLOTA?
+    representation: (1) -> yes_no_question(name)
+    topics: ['you', 'Mr.', 'NAMESLOTA']
+Turn: 20
+    text: "Yes, I am!"
+    representation: (0) -> positive_answer(others)
+    topics: ['I']
+Turn: 21
+    text: All right the name on the card should be the same as I gave: NAMESLOTU.
+    representation: (1) -> provide(name)
+    topics: ['name', 'card', 'I']
+Turn: 22
+    text: "Great, and the billing address?"
+    representation: (0) -> elicitation(address)
+    topics: ['billing', 'address']
+Turn: 23
+    text: The billing address is the same as the shipping address.
+    representation: (1) -> provide(address)
+    topics: ['billing', 'address', 'shipping']
+Turn: 24
+    text: ADDRSLOT
+    representation: (1) -> provide(address)
+    topics: []
+Turn: 25
+    text: Amazing.
+    representation: (0) -> hold(others)
+    topics: []
+Turn: 26
+    text: Can you just confirm the CSV number and expiration date?
+    representation: (0) -> elicitation(card_csv)
+    topics: ['you', 'csv', 'number', 'expiration', 'date']
+Turn: 27
+    text: "Okay, and then you can tell me when my order will arrive?"
+    representation: (1) -> yes_no_question(card_csv)
+    topics: ['you', 'I', 'order']
+Turn: 28
+    text: The number is CSVSLOT.
+    representation: (1) -> provide(card_csv)
+    topics: ['number', 'CSVSLOT']
+Turn: 29
+    text: "Yes, I just need to confirm your identity with the rest of that information"
+    representation: (0) -> positive_answer(others)
+    topics: ['I', 'identity', 'rest', 'information']
+Turn: 30
+    text: "Okay, do you need my card's expiration date?"
+    representation: (1) -> yes_no_question(card_date)
+    topics: ['you', 'card', 'expiration', 'date']
+Turn: 31
+    text: It's DATESLOT.
+    representation: (1) -> provide(card_date)
+    topics: ['it']
+Turn: 32
+    text: Yes and the CSV number.
+    representation: (0) -> elicitation(card_csv)
+    topics: ['csv', 'number']
+Turn: 33
+    text: CSVSLOT
+    representation: (1) -> provide(card_csv)
+    topics: ['CSVSLOT']
+Turn: 34
+    text: when my order will arrive?
+    representation: (1) -> open_question(order_detail)
+    topics: ['order']
+Turn: 35
+    text: I need it before next week.
+    representation: (1) -> nonresponsive_statement(order_detail)
+    topics: ['I', 'it', 'week']
+Turn: 36
+    text: Perfect.
+    representation: (0) -> hold(others)
+    topics: []
+Turn: 37
+    text: "Yes, your order will arrive by Thursday afternoon."
+    representation: (0) -> responsive_statement(order_detail)
+    topics: ['order', 'Thursday', 'afternoon']
+Turn: 38
+    text: "Thanks, and can I get your number in case it doesn't arrive on time?"
+    representation: (1) -> elicitation(phone_num)
+    topics: ['thanks', 'I', 'number', 'case', 'it', 'time']
