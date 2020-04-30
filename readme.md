@@ -1,9 +1,9 @@
-##Omicron NLG
+## Omicron NLG
 ###### CISL@RPI 
 
 
 ---
-####References
+#### References
 ```bibtex
 @inproceedings{qi2020stanza,
     title={Stanza: A {Python} Natural Language Processing Toolkit for Many Human Languages},
