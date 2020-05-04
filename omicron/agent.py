@@ -1,71 +1,110 @@
+from typing import Union
+from collections import OrderedDict
 import networkx as nx
 import threading
+import uuid
+from omicron import stanza_nlp, OMICRON_NAMESPACE
+from omicron.utils import INDENT
+from omicron.nlp import tokens
 
 
-class User:
-    def __init__(self, _user: str, _index: int):
-        self._username = _user
-        self._id = f"U-{_index}"
+class Agent:
+    def __init__(self, _agent: int):
+        self._xid = _agent
+        self._id = uuid.uuid5(OMICRON_NAMESPACE, f"{_agent}")
+        self._memory = Memory((self.xid, self.id))
+        _heartbeat_tempo = 0.25
 
-    @property
-    def name(self):
-        return self._username
+    def input(self, _repr):
+        # turn['tokens'] = tokens(turn['text'])
+        # take in as input a dialog turn from another agent.
+        # process turn, determine dialog act/ask, etc.
+        # update memory with input turn
+        print(f"{INDENT}AGENT {self.xid}\t<INPUT>:\t{_repr['text']}")
 
-    @name.setter
-    def name(self, value):
-        self._username = value
+    def output(self, _repr: dict):
+        # generate and output a dialog turn from a semantic representation
+        # update memory with output turn
+        print(f"{INDENT}AGENT {self.xid}\t<OUTPUT>:\t{_repr['intent']}({_repr['semantic_slot']})")
 
     @property
     def id(self):
         return self._id
+
+    @property
+    def xid(self):
+        return self._xid
+
+    @property
+    def memory(self):
+        return self._memory
+
+    @property
+    def sentinel(self):
+        return self._sentinel
 
     def __str__(self):
-        return f"{self.id}"
+        return f"_agent_{self.xid}_"
 
     def __repr__(self):
-        return f"{self.id}"
+        return f"<_AGENT_{self.id}_>"
 
 
-class Post:
-
-    def __init__(self, _post: tuple, _conv_index: int):
-        self._conv_index = _conv_index
-        self._id = f"P-{self.index}"
-        self._dialog_act = _post[0]
-        self._posted_by = _post[1]
-        self._text = _post[2]
-        self._terminals = _post[3]
-
-    @classmethod
-    def build(cls, _post, _index, debug=False):
-        attribute = _post.attrib
-        if debug:
-            print(f"\n{attribute['user']} says: {_post.text}. \nIt is a {attribute['class']}")
-        _p = (attribute['class'],
-              attribute['user'],
-              _post.text,
-              [(t.attrib['pos'], t.attrib['word']) for t in _post.findall('./terminals/t')])
-        return Post(_p, _index)
-
-    @property
-    def dialog_act(self):
-        return self._dialog_act
-
-    @dialog_act.setter
-    def dialog_act(self, value):
-        self._dialog_act = value
+class Sentinel:
+    def __init__(self, seed):
+        self._id = uuid.uuid5(OMICRON_NAMESPACE, f"{seed[1]}")
+        self._agent = OrderedDict(zip(['SIMPLE', 'UUID'], seed))
 
     @property
     def id(self):
         return self._id
 
     @property
-    def user(self):
-        return self._posted_by
+    def agent(self):
+        return self._agent
 
-    @user.setter
-    def user(self, value):
-        self._posted_by = value
+    def __str__(self):
+        return f"_agent_{self.agent['SIMPLE']}_"
+
+    def __repr__(self):
+        return f"<_AGENT_{self.id}_>"
+
+
+class Turn:
+    def __init__(self, seed, turn):
+        self._index = turn['turn']
+        self._id = uuid.uuid5(OMICRON_NAMESPACE, f"{seed[1]}")
+        self._intent = ""
+        self._slot = ""
+        self._agent = OrderedDict(zip(['SIMPLE', 'UUID'], seed))
+        self._directed_to = f"1" if f"{self.agent['SIMPLE']}" == f"0" else f"0"
+        self._text = ""
+        self._terminals = ""
+
+
+    @property
+    def intent(self):
+        return self._intent
+
+    @intent.setter
+    def intent(self, value):
+        self._intent = value
+
+    @property
+    def id(self):
+        return self._id
+
+    @property
+    def index(self):
+        return self._index
+
+    @property
+    def agent(self):
+        return self._agent
+
+    @agent.setter
+    def agent(self, value):
+        self._agent = value
 
     @property
     def text(self):
@@ -93,7 +132,7 @@ class Post:
 class Topic:
 
     def __init__(self, constituents, user, index, cutoff):
-        self._id = f"T-{index}"
+        self._id = f"TOPIC-{index}"
         self._constituents = constituents
         self._posted_by = user
         self._topic_index = index
@@ -168,13 +207,57 @@ class AtomicCounter:
             return self.value
 
     def __str__(self):
-        return str(self.value)
+        return f"{self.value}"
 
     def __repr__(self):
-        return str(self.value)
+        return f"{self.value}"
 
 
-class TopicContext:
+class Memory(nx.MultiDiGraph):
+    def __init__(self, seed):
+        super(Memory, self).__init__()
+        self.sentinel = Sentinel(seed)
+        self.context = Context()
+        self.turn_count = AtomicCounter()
+        self.origin = Origin()
+        super().add_node(self.origin, label=f"{self.origin}")
+        super().add_node(self.sentinel, label=f"SELF_{self.sentinel}")
+        super().add_edge(self.sentinel, self.origin, tag="IN")
+
+    @property
+    def sentinel(self):
+        return self._sentinel
+
+    @sentinel.setter
+    def sentinel(self, value):
+        self._sentinel = value
+
+    @property
+    def context(self):
+        return self._context
+
+    @context.setter
+    def context(self, value):
+        self._context = value
+
+    @property
+    def count(self):
+        return self._turn_count
+
+    @count.setter
+    def count(self, value):
+        self._turn_count = value
+
+    @property
+    def origin(self):
+        return self._origin
+
+    @origin.setter
+    def origin(self, value):
+        self._origin = value
+
+
+class Context:
     def __init__(self, n: int = 10, debug: bool = False):
         self._store = []
         self._n = n
@@ -245,8 +328,9 @@ class TopicContext:
         return self._n
 
 
-class TopicGraph(nx.MultiDiGraph):
+class Origin:
+    def __str__(self):
+        return f"Origin "
 
-    def __init__(self):
-        super(TopicGraph, self).__init__()
-        self.context = TopicContext()
+    def __repr__(self):
+        return f"<ORIGIN>"
