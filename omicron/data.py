@@ -1,17 +1,17 @@
 from collections import OrderedDict
 from omicron.utils import SRC_PATH
-from omicron.nlp import tokens, get_topic
+from omicron.nlp import get_tokens, get_topics
 import json
 from pprint import pprint
 
 header = ['turn', 'agent', 'text', 'tokens', 'intent', 'semantic_slot',]
 
 
-def process_data(filedir: str = SRC_PATH, prettyprint: bool = False):
+def process_data(filedir: str = SRC_PATH, verbose: bool = False):
     def _process_row(_index, _row):
         _row = [el.strip() for el in _row.split('\t') if el != '']
         _row.insert(0, _index)
-        _row.insert(3, tokens(_row[2], False))
+        _row.insert(3, get_tokens(_row[2], False))
         return _row
 
     _data = []
@@ -27,7 +27,7 @@ def process_data(filedir: str = SRC_PATH, prettyprint: bool = False):
     return _data
 
 
-def write_files(_data, prettyprint: bool = False):
+def write_files(_data, verbose: bool = False):
     from omicron.utils import JSON_PATH, SEM_PATH
     with open(JSON_PATH, 'w') as jsonfile:
         json.dump(_data, jsonfile, indent=2)
@@ -38,14 +38,11 @@ def write_files(_data, prettyprint: bool = False):
                  f"\ttext: {turn['text']}\n"
                  f"\trepresentation: ({turn['agent']}) -> "
                  f"{turn['intent']}({turn['semantic_slot']})\n"
-                 f"\ttopics: {get_topic(turn)}\n\n")
+                 f"\ttopics: {get_topics(turn)}\n\n")
             #    f"\tturn: {turn}\n\n")
-            if prettyprint:
+            if verbose:
                 print(s)
             semfile.write(s)
-
-    # with open(COMP_DIR, 'w') as compfile:
-    #     for turn in data:
 
 
 def build_dialog(_data, _to_file: bool = False):
@@ -54,6 +51,7 @@ def build_dialog(_data, _to_file: bool = False):
     def _input_turn(_turn):
         input_turn = OrderedDict({"turn": _turn["turn"],
                                   "text": _turn["text"],
+                                  "agent": _turn["agent"],
                                   "__tokens__": _turn["tokens"],
                                   "__intent__": _turn["intent"],
                                   "__semantic_slot__": _turn["semantic_slot"]})
@@ -72,13 +70,9 @@ def build_dialog(_data, _to_file: bool = False):
     return _a0, _a1, _data
 
 
-def build_script(_data, _to_file: bool = False):
+# def build_script(_data, _to_file: bool = False):
     from omicron.utils import SCRIPT_DIR
-
-
-    pass
-
-
+    # pass
 
 
 if __name__ == '__main__':
