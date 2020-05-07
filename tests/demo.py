@@ -3,7 +3,7 @@ from omicron.data import process_data, build_dialog
 from omicron.utils import A0, A1, COMPOSITE, INDENT
 
 
-def demo(verbose: bool = True):
+def demo(verbose: bool = False):
     _data = process_data()
     _a0_script, _a1_script, _data = build_dialog(_data)
     _global_dialog_index = AtomicCounter()
@@ -34,8 +34,7 @@ def demo(verbose: bool = True):
         # print(f"OUTPUT: {_global_turn['output']}")
         # print(f"INPUT: {_global_turn['input']}")
         _global_turn["output"]["agent"].handle(_global_turn["output"]["turn"])
-        _global_turn["output"]["agent"].handle(_global_turn["input"]["turn"])
-
+        _global_turn["input"]["agent"].handle(_global_turn["input"]["turn"])
 
         # if mode.upper() == "INPUT":
         #     _agent.input(_script[_i][mode])
@@ -55,6 +54,9 @@ def demo(verbose: bool = True):
         _global_dialog_index.increment()
         if _global_dialog_index.value >= len(_data):
             _continue = False
+
+    agents["0"].render_memory()
+    agents["1"].render_memory()
 
 
 if __name__ == '__main__':
