@@ -19,8 +19,23 @@ def demo(verbose: bool = True):
         _a0_turn = _script["0"][_i]
         _a1_turn = _script["1"][_i]
 
-        print(_a0_turn['\tmode'])
-        print(_a1_turn['\tmode'])
+        _global_turn = {}
+        if _a0_turn['mode'] == "output":
+            _global_turn["output"] = {"agent": agents["0"],
+                                      "turn": _a0_turn}
+            _global_turn["input"] = {"agent": agents["1"],
+                                     "turn": _a1_turn}
+        elif _a1_turn['mode'] == "output":
+            _global_turn["output"] = {"agent": agents["1"],
+                                      "turn": _a1_turn}
+            _global_turn["input"] = {"agent": agents["0"],
+                                     "turn": _a0_turn}
+
+        # print(f"OUTPUT: {_global_turn['output']}")
+        # print(f"INPUT: {_global_turn['input']}")
+        _global_turn["output"]["agent"].handle(_global_turn["output"]["turn"])
+        _global_turn["output"]["agent"].handle(_global_turn["input"]["turn"])
+
 
         # if mode.upper() == "INPUT":
         #     _agent.input(_script[_i][mode])

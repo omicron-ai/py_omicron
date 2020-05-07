@@ -4,7 +4,7 @@ from omicron.nlp import tokens, get_topic
 import json
 from pprint import pprint
 
-header = ['turn', 'agent', 'text', 'tokens', 'intent', 'semantic_slot']
+header = ['turn', 'agent', 'text', 'tokens', 'intent', 'semantic_slot',]
 
 
 def process_data(filedir: str = SRC_PATH, prettyprint: bool = False):
@@ -69,8 +69,16 @@ def build_dialog(_data, _to_file: bool = False):
         with open(f"{COMPOSITE}", 'w') as _dialog_file:
             json.dump(_data, _dialog_file, indent=2)
 
-
     return _a0, _a1, _data
+
+
+def build_script(_data, _to_file: bool = False):
+    from omicron.utils import SCRIPT_DIR
+
+
+    pass
+
+
 
 
 if __name__ == '__main__':
