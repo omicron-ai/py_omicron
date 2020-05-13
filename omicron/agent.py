@@ -106,7 +106,7 @@ class Agent:
         output_turn = Turn(self.xid, {'turn': _signal['turn'], 'text': _signal['text']})
         output_tokens = get_tokens(output_turn.text)
         output_topics = get_topics(output_tokens)
-        output_rep = Representation(self.xid, {'turn': _signal['turn'],
+        output_rep = Plan(self.xid, {'turn': _signal['turn'],
                                                'intent': _signal['intent'],
                                                'sem_slot': _signal['semantic_slot'],
                                                'agent': _signal['agent'],
@@ -328,12 +328,30 @@ class Representation:
         self.topic_tokens = rep['tokens']
         self.type = "R"
 
-
     def __str__(self):
         return f"_repr_{self.turn}_"
 
     def __repr__(self):
         return f"<_REPR_{self.id}>_"
+
+
+class Plan:
+    def __init__(self, seed, rep):
+        self.id = uuid.uuid5(OMICRON_NAMESPACE, f"{seed}")
+        self.turn = rep['turn']
+        self.intent = rep['intent']
+        self.agent = rep['agent']
+        self.directed_to = rep['directed_to']
+        self.sem_slot = rep['sem_slot']
+        self.tokens = rep['tokens']
+        self.topic_tokens = rep['tokens']
+        self.type = "P"
+
+    def __str__(self):
+        return f"_plan_{self.turn}_"
+
+    def __repr__(self):
+        return f"<_PLAN_{self.id}>_"
 
 
 class Turn:

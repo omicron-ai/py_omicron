@@ -3,6 +3,7 @@ from omicron.utils import SRC_PATH
 from omicron.nlp import get_tokens, get_topics
 import json
 from pprint import pprint
+import pickle
 
 header = ['turn', 'agent', 'text', 'tokens', 'intent', 'semantic_slot',]
 
