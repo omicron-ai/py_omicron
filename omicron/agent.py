@@ -22,17 +22,7 @@ from omicron.agenda import Agenda
 
 
 class Agent:
-    """The core omicron agent class.
-
-    Attributes:
-        xid
-        id
-        memory
-        sentinel
-        agenda
-        signals
-        signal_count
-    """
+    """The core omicron agent class."""
 
     def __init__(self, _agent_index: int):
         """
@@ -75,13 +65,13 @@ class Agent:
         input_turn = Turn(self.xid, {'turn': _signal['turn'], 'text': _signal['text']})
         input_tokens = get_tokens(input_turn.text)
         input_topics = get_topics(input_tokens)
-        input_rep = Representation(self.xid, {'turn': _signal['turn'],
-                                              'intent': _signal['__intent__'],
-                                              'sem_slot': _signal['__semantic_slot__'],
-                                              'agent': _signal['agent'],
-                                              'directed_to': input_turn.directed_to,
-                                              'tokens': input_tokens,
-                                              'topics': input_topics})
+        input_rep = Plan(self.xid, {'turn': _signal['turn'],
+                                    'intent': _signal['__intent__'],
+                                    'sem_slot': _signal['__semantic_slot__'],
+                                    'agent': _signal['agent'],
+                                    'directed_to': input_turn.directed_to,
+                                    'tokens': input_tokens,
+                                    'topics': input_topics})
 
         self.memory.add_input(input_turn, input_rep)
 
@@ -152,15 +142,7 @@ class Agent:
 
 
 class Sentinel:
-    """Abstract in-memory agent representation.
-
-    Attributes:
-        id
-        agent
-        type
-
-    """
-
+    """Abstract in-memory agent representation."""
     def __init__(self, seed):
         self.id = uuid.uuid5(OMICRON_NAMESPACE, f"{seed[1]}")
         self.agent = OrderedDict(zip(['SIMPLE', 'UUID'], seed))
@@ -174,6 +156,7 @@ class Sentinel:
 
 
 class Memory(nx.MultiDiGraph):
+    """Internal graph representing agent memory."""
     def __init__(self, seed):
         super(Memory, self).__init__(rankdir="LR", mode="scale")
         self.sentinel = Sentinel(seed)
@@ -215,6 +198,7 @@ class Memory(nx.MultiDiGraph):
 
 
 class Context:
+    """Internal representation of dialog context."""
     def __init__(self, n: int = 10, debug: bool = False):
         self._store = []
         self._n = n
@@ -240,15 +224,18 @@ class Context:
                               "TOPIC": t}
                     t.increment_cutoff(value=2)
                     found = True
-                    if debug: print(f"\nFOUND INTERSECTION: {t.id}"
-                                    f"\nTOPIC CUTOFF: {t.cutoff}"
-                                    f"\nTOPIC COUNT: {t.count}")
+                    if debug:
+                        print(f"\nFOUND INTERSECTION: {t.id}"
+                              f"\nTOPIC CUTOFF: {t.cutoff}"
+                              f"\nTOPIC COUNT: {t.count}")
                     break
             if not found:
-                if debug: print(f"NEW TOPIC: {topic.id}")
+                if debug:
+                    print(f"NEW TOPIC: {topic.id}")
                 self.add_topic(topic)
         else:
-            if debug: print(f"TOPIC IS NONE.")
+            if debug:
+                print(f"TOPIC IS NONE.")
         self.advance(debug=debug)
         if debug: print("\n/\\ ========== DEBUG ========== /\\\n")
         return output
@@ -260,7 +247,8 @@ class Context:
             if t.count == t.cutoff:
                 self.remove_topic(i)
         loss -= len(self.store)
-        if debug: print(f"STORE LOSS: {loss}")
+        if debug:
+            print(f"STORE LOSS: {loss}")
 
     def add_topic(self, topic: 'Topic', debug: bool = False):
         self._store.append(topic)
@@ -283,25 +271,6 @@ class Context:
     @property
     def n(self):
         return self._n
-
-
-class Representation:
-    def __init__(self, seed, rep):
-        self.id = uuid.uuid5(OMICRON_NAMESPACE, f"{seed}")
-        self.turn = rep['turn']
-        self.intent = rep['intent']
-        self.agent = rep['agent']
-        self.directed_to = rep['directed_to']
-        self.sem_slot = rep['sem_slot']
-        self.tokens = rep['tokens']
-        self.topic_tokens = rep['tokens']
-        self.type = "R"
-
-    def __str__(self):
-        return f"_repr_{self.turn}_"
-
-    def __repr__(self):
-        return f"<_REPR_{self.id}>_"
 
 
 class Plan:
