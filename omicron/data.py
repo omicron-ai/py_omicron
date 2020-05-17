@@ -1,5 +1,5 @@
 from collections import OrderedDict
-from omicron.utils import SRC_PATH
+from omicron.constants import SRC_PATH
 from omicron.nlp import get_tokens, get_topics
 import json
 from pprint import pprint
@@ -29,7 +29,7 @@ def process_data(filedir: str = SRC_PATH, verbose: bool = False):
 
 
 def write_files(_data, verbose: bool = False):
-    from omicron.utils import JSON_PATH, SEM_PATH
+    from omicron.constants import JSON_PATH, SEM_PATH
     with open(JSON_PATH, 'w') as jsonfile:
         json.dump(_data, jsonfile, indent=2)
 
@@ -47,7 +47,7 @@ def write_files(_data, verbose: bool = False):
 
 
 def build_dialog(_data, _to_file: bool = False):
-    from omicron.utils import A0, A1, COMPOSITE
+    from omicron.constants import A0, A1, COMPOSITE
 
     def _input_turn(_turn):
         input_turn = OrderedDict({"turn": _turn["turn"],
@@ -72,7 +72,7 @@ def build_dialog(_data, _to_file: bool = False):
 
 
 # def build_script(_data, _to_file: bool = False):
-    from omicron.utils import SCRIPT_DIR
+    from omicron.constants import SCRIPT_DIR
     # pass
 
 
