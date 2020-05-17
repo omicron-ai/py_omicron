@@ -3,7 +3,7 @@ from omicron.data import process_data, build_dialog
 from omicron.constants import A0, A1, COMPOSITE, INDENT
 
 
-def demo(verbose: bool = False):
+def demo1(verbose: bool = False):
     _data = process_data()
     _a0_script, _a1_script, _data = build_dialog(_data)
     _global_dialog_index = AtomicCounter()
@@ -55,9 +55,15 @@ def demo(verbose: bool = False):
         if _global_dialog_index.value >= len(_data):
             _continue = False
 
-    agents["0"].render_memory()
-    agents["1"].render_memory()
+    agents["0"].render_memory(filename="1-a0_memory.png")
+    agents["1"].render_memory(filename="1-a1_memory.png")
+
+
+def demo2(verbose: bool = False):
+
+    pass
 
 
 if __name__ == '__main__':
-    demo()
+    demo1()
+    # demo2()
