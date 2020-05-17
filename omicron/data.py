@@ -8,7 +8,7 @@ import pickle
 header = ['turn', 'agent', 'text', 'tokens', 'intent', 'semantic_slot',]
 
 
-def process_data(filedir: str = SRC_PATH, verbose: bool = False):
+def process_data(file_dir: str = SRC_PATH, verbose: bool = False):
     def _process_row(_index, _row):
         _row = [el.strip() for el in _row.split('\t') if el != '']
         _row.insert(0, _index)
@@ -16,13 +16,13 @@ def process_data(filedir: str = SRC_PATH, verbose: bool = False):
         return _row
 
     _data = []
-    with open(filedir, 'r') as file:
-        turnindex = 0
+    with open(file_dir, 'r') as file:
+        turn_index = 0
         for line in file:
             if line != '\n':
-                row = _process_row(turnindex, line)
+                row = _process_row(turn_index, line)
                 _data.append(OrderedDict(zip(header, row)))
-                turnindex += 1
+                turn_index += 1
     del _data[-1]
 
     return _data
@@ -30,20 +30,19 @@ def process_data(filedir: str = SRC_PATH, verbose: bool = False):
 
 def write_files(_data, verbose: bool = False):
     from omicron.constants import JSON_PATH, SEM_PATH
-    with open(JSON_PATH, 'w') as jsonfile:
-        json.dump(_data, jsonfile, indent=2)
+    with open(JSON_PATH, 'w') as json_file:
+        json.dump(_data, json_file, indent=2)
 
-    with open(SEM_PATH, 'w') as semfile:
+    with open(SEM_PATH, 'w') as sem_file:
         for turn in _data:
             s = (f"turn: {turn['turn']}\n"
                  f"\ttext: {turn['text']}\n"
                  f"\trepresentation: ({turn['agent']}) -> "
                  f"{turn['intent']}({turn['semantic_slot']})\n"
                  f"\ttopics: {get_topics(turn)}\n\n")
-            #    f"\tturn: {turn}\n\n")
             if verbose:
                 print(s)
-            semfile.write(s)
+            sem_file.write(s)
 
 
 def build_dialog(_data, _to_file: bool = False):
@@ -69,11 +68,6 @@ def build_dialog(_data, _to_file: bool = False):
             json.dump(_data, _dialog_file, indent=2)
 
     return _a0, _a1, _data
-
-
-# def build_script(_data, _to_file: bool = False):
-    from omicron.constants import SCRIPT_DIR
-    # pass
 
 
 if __name__ == '__main__':
