@@ -1,6 +1,6 @@
 from omicron.agent import Agent, AtomicCounter
 from omicron.data import process_data, build_dialog
-from omicron.utils import A0, A1, COMPOSITE, INDENT
+from omicron.constants import A0, A1, COMPOSITE, INDENT
 
 
 def demo(verbose: bool = False):
