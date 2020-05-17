@@ -1,32 +1,24 @@
+#    Copyright (C) 2020 by
+#    Ivan Leon <leoni@rpi.edu>
+#    All rights reserved.
+#    MIT license.
 """Create dialog agents for training and production.
 
 See module train for a mechanism for training agents.
 See module build for a mechanism for building agents for production.
-
-Classes:
-    Agent
-    Sentinel
-    Memory
-    Agenda
-    Context
-    Representation
-    Turn
-    Topic
-    AtomicCounter
-    Origin
-
 """
 
 from typing import Union
 from collections import OrderedDict
 import networkx as nx
-import threading
 import uuid
 from omicron import stanza_nlp, OMICRON_NAMESPACE
-from omicron.utils import INDENT, IMAGE_DIR
+from omicron.constants import INDENT, IMAGE_DIR
 from omicron.nlp import get_tokens, get_topics
-import matplotlib.pyplot as plt
-import matplotlib.pylab as pylab
+from omicron.utilities import AtomicCounter, Origin
+from omicron.agenda import Agenda
+# import matplotlib.pyplot as plt
+# import matplotlib.pylab as pylab
 
 
 class Agent:
@@ -56,7 +48,7 @@ class Agent:
         self.signals = []
         self.signal_count = AtomicCounter()
 
-    def handle(self, _signal = None):
+    def handle(self, _signal=None):
         """
         Handle agent signal. Signals are either input or output representations. If
         the signal is None, handle the next signal on agenda.
@@ -107,12 +99,12 @@ class Agent:
         output_tokens = get_tokens(output_turn.text)
         output_topics = get_topics(output_tokens)
         output_rep = Plan(self.xid, {'turn': _signal['turn'],
-                                               'intent': _signal['intent'],
-                                               'sem_slot': _signal['semantic_slot'],
-                                               'agent': _signal['agent'],
-                                               'directed_to': output_turn.directed_to,
-                                               'tokens': output_tokens,
-                                               'topics': output_topics})
+                                     'intent': _signal['intent'],
+                                     'sem_slot': _signal['semantic_slot'],
+                                     'agent': _signal['agent'],
+                                     'directed_to': output_turn.directed_to,
+                                     'tokens': output_tokens,
+                                     'topics': output_topics})
 
         self.memory.add_output(output_turn, output_rep)
 
@@ -160,7 +152,7 @@ class Agent:
 
 
 class Sentinel:
-    """Abstract agent in memory.
+    """Abstract in-memory agent representation.
 
     Attributes:
         id
@@ -168,6 +160,7 @@ class Sentinel:
         type
 
     """
+
     def __init__(self, seed):
         self.id = uuid.uuid5(OMICRON_NAMESPACE, f"{seed[1]}")
         self.agent = OrderedDict(zip(['SIMPLE', 'UUID'], seed))
@@ -219,30 +212,6 @@ class Memory(nx.MultiDiGraph):
         self.add_edge(turn, self.agents[rep.directed_to], label="INPUT")
         self.add_edge(self.sentinel, rep, label="PRODUCES")
         self.add_edge(rep, turn, label="REPRESENTS")
-
-
-class Agenda:
-    def __init__(self):
-        self.store = OrderedDict()
-        self.processed = OrderedDict()
-        self.counter = AtomicCounter()
-
-    def add_signal(self, signal):
-        sid = f"G-{self.counter.value}"
-        self.store[sid] = signal
-        self.counter.increment()
-        return sid
-
-    def process_signal(self, sid):
-        signal = self.store[sid]
-        self.processed[sid] = signal
-        del self.store[sid]
-        return signal
-
-    def get_next_signal(self):
-        sid = [(i[0], i[1]) for i in self.store.items()][0][0]
-        signal = self.process_signal(sid)
-        return sid, signal
 
 
 class Context:
@@ -366,7 +335,9 @@ class Turn:
         return f"_turn_{self.index}_"
 
     def __repr__(self):
-        return f"<_TURN_{self.id}_>"
+        # return f"<_TURN_{self.id}_>"
+        return f"<{self.__class__.__module__}.{self.__class__.__name__}: " \
+               f"TURN-{self.index} at {hex(id(self))}>"
 
 
 class Topic:
@@ -375,7 +346,7 @@ class Topic:
         self.id = f"TOPIC-{index}"
         self.constituents = constituents
         self.posted_by = user
-        self.topic_index = index
+        self.index = index
         self.cutoff = cutoff
         self._counter = AtomicCounter()
 
@@ -390,7 +361,7 @@ class Topic:
         self.cutoff = self.cutoff + value
 
     def constituents(self):
-        return self._constituents
+        return self.constituents
 
     def intersect(self, topic: 'Topic'):
         for c in self.constituents():
@@ -409,32 +380,8 @@ class Topic:
         return f"{self.id}"
 
     def __repr__(self):
-        return f"{self.id}"
+        # return f"{self.id}"
+        return f"<{self.__class__.__module__}.{self.__class__.__name__}: " \
+               f"TOPIC-{self.index} at {hex(id(self))}>"
 
 
-class AtomicCounter:
-    def __init__(self, initial=0):
-        self.value = initial
-        self._lock = threading.Lock()
-
-    def increment(self, num=1):
-        with self._lock:
-            self.value += num
-            return self.value
-
-    def __str__(self):
-        return f"{self.value}"
-
-    def __repr__(self):
-        return f"{self.value}"
-
-
-class Origin:
-    def __init__(self):
-        self.type = "O"
-
-    def __str__(self):
-        return f"Origin "
-
-    def __repr__(self):
-        return f"<ORIGIN>"
