@@ -1,0 +1,116 @@
+{
+    "conversation": [
+        {
+            "turn": 1,
+            "agent": 0, 
+            "text": "Hi!",
+            "intent": "greeting",
+            "semantic_slot": "others"
+        },
+        {
+            "turn": 2,
+            "agent": 1, 
+            "text": "Hi there.",
+            "intent": "greeting",
+            "semantic_slot": "others"
+        },
+        {
+            "turn": 3,
+            "agent": 1, 
+            "text": "How are you?",
+            "intent": "greeting",
+            "semantic_slot": "others"
+        },
+        {
+            "turn": 4,
+            "agent": 1, 
+            "text": "I'm wondering if you can help me figure out why something I ordered hasn't arrived yet.",
+            "intent": "yes_no_question",
+            "semantic_slot": "order_detail"
+        },
+        {
+            "turn": 5,
+            "agent": 0,
+            "text": "Yes!",
+            "intent": "positive_answer",
+            "semantic_slot": "order_detail",
+        },
+        {
+            "turn": 6,
+            "agent": 0,
+            "text": "Can you give me your name?",
+            "intent": "",
+            "semantic_slot": "",
+        },
+        {
+            "turn": 7,
+            "agent": 0,
+            "text": "",
+            "intent": "",
+            "semantic_slot": "",
+        },
+        {
+            "turn": 8,
+            "agent": 0,
+            "text": "",
+            "intent": "",
+            "semantic_slot": "",
+        },
+        {
+            "turn": 9,
+            "agent": 0,
+            "text": "",
+            "intent": "",
+            "semantic_slot": "",
+        },
+        {
+            "turn": 10,
+            "agent": 0,
+            "text": "",
+            "intent": "",
+            "semantic_slot": "",
+        },
+        {
+            "turn": 11,
+            "agent": 0,
+            "text": "",
+            "intent": "",
+            "semantic_slot": "",
+        },
+        {
+            "turn": 12,
+            "agent": 0,
+            "text": "",
+            "intent": "",
+            "semantic_slot": "",
+        },
+        {
+            "turn": 13,
+            "agent": 0,
+            "text": "",
+            "intent": "",
+            "semantic_slot": "",
+        },
+        {
+            "turn": 0,
+            "agent": 0,
+            "text": "",
+            "intent": "",
+            "semantic_slot": "",
+        },
+        {
+            "turn": 0,
+            "agent": 0,
+            "text": "",
+            "intent": "",
+            "semantic_slot": "",
+        },
+        {
+            "turn": 0,
+            "agent": 0,
+            "text": "",
+            "intent": "",
+            "semantic_slot": "",
+        }
+    ]
+}
