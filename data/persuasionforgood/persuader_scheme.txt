@@ -1,0 +1,172 @@
+Persuader:
+1)	Strategy side
+i)	appeal
+1.	logical-appeal
+Logical appeal refers to persuading others by using logical arguments. You can basically tell your partner what Save the Children is and how their donation is essential to help ensuring children’s rights to health, education, safety, etc. Convince your partner their donation will make a tangible impact for the world. Statistics and evidence can be used to support the argument.
+-	‘your donation will make their life better.’
+
+2.	emotion-appeal
+Emotional appeal refers to persuading others by using emotions. It refers to the elicitation of specific emotions to influence others. Specifically, we identified four emotional appeals:~1) telling stories to involve participants, 2) eliciting empathy, 3) eliciting anger, and 4) eliciting the feeling of guilt.
+-	‘Kids are dying from hunger every minute.’
+
+3.	Credibility-appeal
+credibility-appeal, usually Happens after user ask-org-info, refers to the uses of credentials and citing organizational impacts to establish credibility and earn the persuadee's trust. The information usually comes from an objective source (e.g., the organization's website or other well-established websites).
+Different from  7. Donation-Information, this one is about the organization’s fact, instead of how the donation will be sent.
+-	‘it’s an international organization…’
+-	‘I searched it online, it’s ranked No.3 among all organizations…’
+
+4.	foot-in-the-door
+aims at getting a person to agree to a large request by having them agree to a small request first. refers to the strategy of starting with small donation requests to facilitate compliance followed by larger requests  For instance, a persuader first asks for a smaller donation and extends the request to a larger amount after the persuadee shows intention to donate.
+-	Example:
+‘even $0.1 would help’
+
+-	Exception
+Note! Only when it’s used to persuade the partner to donate a small amount, it can be ‘foot-in-the-door’,  e.g. the sentence ‘even little bits can go a long way’ is not foot-in-the-door in the following example,
+-----------------------------------------------------------------------------------------------------------
+Persuader: It's for a great cause.
+Persuader: Children are the future and unfortunately too many of them don't get the quality of life that we take advantage of today.
+Persuader: Sometimes we're in a better place and we have to do what we can to help their conditions a little bit.
+Persuader: Even little bits can go a long way, you know?(NOT foot-in-the-door!)
+Persuadee: it does, and charities can go further with the amount of money donated.
+
+
+5.	self-modelling
+role-model, social pressure, usually happens after persuade ask-for-donation-intention but can also happen in other occasions  as a strategy. refers to the strategy where the persuader first indicates his or her own intention to donate and chooses to act as a role model for the persuadee to follow.
+- ‘I will also match your donation’
+- ‘I will also donate.’
+
+6.	personal-Story
+Persuade by persuader’s  own story. refers to the strategy of using narrative exemplars to illustrate someone's donation experiences or the beneficiaries' positive outcomes, which can motivate others to follow the actions.
+-	‘our family has received help from Save the Children’
+
+
+7.	Donation-Information
+refers to providing specific information about the donation task, such as the donation procedure, donation range, etc. By providing detailed action guidance, this strategy can enhance the persuadee's self-efficacy and facilitates behavior compliance.
+-	‘the researchers will collect the donation and send it to save the children.’
+-	‘how much do you think i should donate’
+
+ii)	inquiry
+8.	source-related-inquiry
+asks if the persuadee is aware of the organization (i.e., the source in our specific donation task). Can happen in the beginning or in the middle or in the end, which will be an important factor to divide the dialogue to two parts.
+-	‘have you heard of ‘save the children’’
+-	‘do you know about ‘save the children’’
+
+
+9.	task-related-inquiry
+asks about the persuadee's opinion and expectation related to the task, such as their interests in knowing more about the organization. non-personal, ask interests in the organization, ask task-related information (not as strong and explicit as propose-donation)
+-	‘do you want to get involved?’
+-	‘do you want to know the organization more?’
+-	‘would it be something you are interested in?’
+-	‘is this something you would consider?’
+-	‘are you sure you don’t want to be involved?’
+-	‘what do you think of the charity?’
+
+
+10.	personal-related-inquiry (*)
+asks about the persuadee's previous personal experiences relevant to charity donation. Inquiry of Personal experience that may be related to donation.
+
+-	“do you have kids”,
+-	‘have you experienced blah…’
+-	‘in your family…’
+-	‘do you donate’
+-	 “do you care about children’s rights”
+
+
+2) Dialog act side
+
+11.	proposition-of-donation
+Offering your partner to donate.
+-	‘would you like to consider a donation?’
+
+12.	ask-donation-amount
+	ask for the specific donation amount. Corresponds to the “proposition of amount” in the paper.
+-	‘how much would you donate?’
+
+13.	confirm-donation
+	confirm donation amount. Corresponds to the “proposition of confirmation” in the paper.
+-	‘are you sure you want to donate $0.5?’
+
+14.	ask-donate-more
+corresponds to the “proposition of more donation” in the paper. Happens after the user agree-to-donate, can be possible combined with foot-in-the-door, but we can always distinguish them first and then combine.
+
+-	‘would you consider donate a bit more?’
+
+
+15.	positive-to-inquiry
+reply to task inquiry, dialog act that happens after certain inquiries, such as ‘have you donated before?’, ‘have you heard of the organization?’, ‘do you have kids’,
+
+-	“yes, I have heard of the organization.”
+-	“Yes, I have donated before to some charity”
+-	‘yes, I have kids. ‘
+-	Yeah I have, what an awful situation that is.
+
+16.	negative-to-inquiry
+reply to task inquiry, dialog act that happens after certain inquiries, such as ‘have you donated before?’, ‘have you heard of the organization?’, ‘do you have kids’. Must be distinguished from negative-reaction-to-donation
+
+-	‘no, I haven’t heard of.’
+-	‘no, I haven’t donated before’.
+-	‘no, I don’t have kids.’
+
+17.	neutral-to-inquiry
+dialog act that happens after certain inquiries, such as ‘have you donated before?’, ‘have you heard of the organization?’, ‘do you have kids’
+
+-	“maybe”,
+-	“I don’t know”
+
+
+18.	comment-partner
+corresponds to the ‘experience-affirmation’ in the paper. comment to partner’s previous statements, contains more information than a general ‘acknowledgement’.
+-	Ee: “I’ve donated to STC for a long time.”
+      er: "Well, STC is a great one! They help a vast amount of kids."
+
+19.	thank
+usually Happens after user agree-to-donate. Can also be general ‘thank you’
+-	‘thanks so much for your donation.’
+-	‘thanks.’
+
+20.	you-are-welcome
+	reply to ‘thank you’
+-	‘you are welcome.’
+
+21.	ask-not-donate-reason
+happens after user disagree-donation
+-	‘may I ask why’
+
+
+
+22.	greeting
+-	‘hello’
+-	‘how are you’
+
+23.	closing
+-	‘goodbye’
+
+24.	acknowledgement
+-	‘absolutely’
+-	‘exactly’
+-	‘yes’
+-	‘ok’
+-	‘alright’
+
+25.	praise-user
+praise the user’s certain behaviors (such as user talks about previous donation)
+-	‘that’s very kind of you to do so!’
+
+
+26.	Off-task
+Act that’s not related to the task.
+-	‘what is the weather?’
+
+27.	other
+Act that doesn’t belong any of the above categories, if the flow is weird, label it as ‘other’ so that it can be deleted later
+-	‘I can certainly understand where you are coming from, and family does come first.’
+
+
+
+
+
+
+
+
+
+

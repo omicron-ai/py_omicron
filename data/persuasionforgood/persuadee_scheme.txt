@@ -1,0 +1,153 @@
+Persuadee:
+General Rule
+1.	ask-org-info
+ask questions about the charity. usually happens after the persuader “source-related-inquiry”
+-	What’s it about?
+-	Tell me more about it
+
+2.	ask-donation-procedure
+ask about how to donate, usually followed by donation-information
+-	‘how can I donate?’
+-	‘how can I help?’
+-	‘how much do you think i should donate?’
+
+3.	agree-donation
+sentences that explicitly indicate donation, usually short sentences.
+- I will donate.
+
+4.	disagree-donation
+sentences that explicitly refuses donation, usually short sentences.
+-	no, I don’t want to donate this time.
+
+5.	Disagree-donation-more
+	Decline to donate more after making a donation.
+-	‘I cannot donate more.’
+
+6.	Provide-donation-amount
+	Indicate donation amount.
+-	‘I’d like to donate 0.5.’
+
+7.	Confirm-donation
+	Confirm the donation amount.
+-	Er: ‘do you confirm your donation to be 0.1?’
+      Ee: ‘yes, I confirm I want to donate $0.1.’
+
+8.	positive-reaction–to-donation
+sentences that shows persuadee’s opinions on the persuader’s last sentence (mostly passively responding, not proposing any new topic/idea, but more like responding to the persuader’s opinion), that shows general positive attitude towards a possible donation. 1) Can be ‘reasons for donation’ (in this case usually happens after agree-donation) 2) can be general opinion that usually happens after emotion_appeal/ logical_appeal/ propose_donation and other persuasive strategies.
+
+This is a generic/broad class. These opinions are more towards a possible donation.
+
+Different from General-agree, these sentences are usually long and contains some opinions (thoughts), but is not proposing a new thought, more passive. Need to consider context.
+
+-	Persuadee: ‘I think children’s right are really important’
+-	 Persuade: ‘I’ve been donating for years. ’ (context is positive towards donation, no disagree-donation-yet)
+-	persuader: Save the children's goal is to promotes children's rights, provides relief and helps support children in developing countries.
+       persuadee: I'm glad organizations like Save the Children are helping. I wish I could do something to help.
+
+-	persuader: How do you feel about those who were unluckily born to poor circumstances?
+      Persuadee: I feel like it's a shame and I wish we could do more.
+
+-	Ee: I'm glad a charity like that exists internationally.
+
+9.	neutral-reaction–to-donation
+sentences that shows persuadee’s opinions on the persuader’s last sentence (mostly passively, not proposing any new topic/idea, but more like responding to the persuader’s opinion), that shows general neutral attitude towards a possible donation. 1) can be general opinion that usually happens after emotion_appeal/ logical_appeal/ propose_donation and other persuasive strategies.
+
+This is a generic/broad class. These opinions are more neutral towards a possible donation.
+
+these sentences are usually long and contains some opinions (thoughts), but is not proposing a new thought, more passive. Need to consider context.
+
+-	‘okay, glad to know.’, usually after persuader’s made certain statements.
+
+10.	negative-reaction–to-donation
+sentences that shows persuadee’s opinions on the persuader’s last sentence (mostly passively, not proposing any new topic/idea, but more like responding to the persuader’s opinion), that shows general negative attitude towards a possible donation. 1) Can be ‘reasons for refuse donation’ (in this case usually happens after disagree-donation) 2) can be general opinion that usually happens after emotion_appeal/ logical_appeal/ propose_donation and other persuasive strategies.
+
+This is a generic/broad class. These opinions are more against a possible donation.
+
+Different from General-disagree, these sentences are usually long and contains some opinions (thoughts), but is not proposing a new thought, more passive. Need to consider context.
+
+-	persuadee: I am already making a different in many children’s life. (context is he declines to donate, this is providing the reason for refusing)
+-	persuadee: ‘I’ve been donating for years. ’ (context is disagree-donation-yet, this is providing the reason for refusing)
+-	Persuader: Save the children's goal is to promotes children's rights, provides relief and helps support children in developing countries.
+       Persuadee: I just don’t believe in these organizations. (can also be disagree-donation-reason)
+
+
+11.	positive-to-inquiry
+reply to task-related-inquiry, simple dialog act that happens after certain inquiries, such as ‘have you donated before?’, ‘have you heard of the organization?’, ‘do you have kids’,
+
+-	“yes, I have heard of the organization.”
+-	“Yes, I have donated before to some charity”
+-	‘yes, I have kids. ‘
+Yeah I have, what an awful situation that is.
+-
+12.	negative-to-inquiry
+reply to task-related-inquiry, simple dialog act that happens after certain inquiries, such as ‘have you donated before?’, ‘have you heard of the organization?’, ‘do you have kids’. Must be distinguished from negative-reaction-to-donation
+
+-	‘no, I haven’t heard of.’
+-	‘no, I haven’t donated before’.
+-	‘no, I don’t have kids.’
+
+13.	neutral-to-inquiry
+simple dialog act that happens after certain inquiries, such as ‘have you donated before?’, ‘have you heard of the organization?’, ‘do you have kids’
+
+“maybe”,
+“I don’t know”
+
+14.	ask-persuader-donation-intention
+ask the persuader if they will donate. Followed by persuader’s self-modeling.
+
+-	“are you going to donate as well?”
+
+15.	task-related-inquiry
+non-personal, ask interests in the organization, ask task-related information (not as strong and explicit as propose-donation)
+-	‘do you want to get involved?’
+-	‘do you want to know the organization more?’
+-	‘would it be something you are interested in?’
+-	‘is this something you would consider?’
+-	‘are you sure you don’t want to be involved?’
+-	‘what do you think of the charity?’
+
+
+16.	personal-related-inquiry
+Inquiry of Personal experience that may be related to donation, can be possibly combined with task-related-inquiry in the future.
+
+-	“do you have kids”,
+-	‘have you experienced blah…’
+-	‘in your family…’
+-	‘do you donate’
+-	 “do you care about children’s rights”
+
+17.	acknowledgement
+-	‘absolutely’
+-	‘exactly’
+-	‘yes’
+-	‘ok’
+-	‘alright’
+
+
+18.	greeting
+-	‘hello how are you’
+
+19.	closing
+‘thank you, good bye.’
+
+20.	thank
+	general thank you
+-	‘thanks.’
+
+21.	you-are-welcome
+-	‘you are welcome.’
+
+22.	off-task
+	may be deleted later, not related the task
+-	‘what’s the weather’
+
+23.	other
+related to the task, but doesn’t belong to any categories above. can be deleted later
+-	‘I can certainly understand where you are coming from, and family does come first.’
+
+
+
+
+
+
+
