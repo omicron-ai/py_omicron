@@ -13,7 +13,6 @@ IMAGE_DIR = f'{ROOT_DIR}/images'
 DIALOG_DIR = f"{DATA_DIR}/dialog"
 SCRIPT_DIR = f"{DATA_DIR}/script"
 
-
 # --- SAMPLE ANNOTATION FILE PATHS
 SRC_PATH = f'{DATA_DIR}/sample_annotation.txt'
 JSON_PATH = f'{DATA_DIR}/sample_annotation1.json'
