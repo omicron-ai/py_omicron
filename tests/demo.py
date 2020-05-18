@@ -1,9 +1,9 @@
 from omicron.agent import Agent, AtomicCounter
 from omicron.data import process_data, build_dialog
-from omicron.utils import A0, A1, COMPOSITE, INDENT
+from omicron.constants import A0, A1, COMPOSITE, INDENT
 
 
-def demo(verbose: bool = True):
+def demo1(verbose: bool = False):
     _data = process_data()
     _a0_script, _a1_script, _data = build_dialog(_data)
     _global_dialog_index = AtomicCounter()
@@ -19,8 +19,22 @@ def demo(verbose: bool = True):
         _a0_turn = _script["0"][_i]
         _a1_turn = _script["1"][_i]
 
-        print(_a0_turn['\tmode'])
-        print(_a1_turn['\tmode'])
+        _global_turn = {}
+        if _a0_turn['mode'] == "output":
+            _global_turn["output"] = {"agent": agents["0"],
+                                      "turn": _a0_turn}
+            _global_turn["input"] = {"agent": agents["1"],
+                                     "turn": _a1_turn}
+        elif _a1_turn['mode'] == "output":
+            _global_turn["output"] = {"agent": agents["1"],
+                                      "turn": _a1_turn}
+            _global_turn["input"] = {"agent": agents["0"],
+                                     "turn": _a0_turn}
+
+        # print(f"OUTPUT: {_global_turn['output']}")
+        # print(f"INPUT: {_global_turn['input']}")
+        _global_turn["output"]["agent"].handle(_global_turn["output"]["turn"])
+        _global_turn["input"]["agent"].handle(_global_turn["input"]["turn"])
 
         # if mode.upper() == "INPUT":
         #     _agent.input(_script[_i][mode])
@@ -41,6 +55,15 @@ def demo(verbose: bool = True):
         if _global_dialog_index.value >= len(_data):
             _continue = False
 
+    agents["0"].render_memory(filename="1-a0_memory.png")
+    agents["1"].render_memory(filename="1-a1_memory.png")
+
+
+def demo2(verbose: bool = False):
+
+    pass
+
 
 if __name__ == '__main__':
-    demo()
+    demo1()
+    # demo2()

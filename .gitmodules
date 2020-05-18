@@ -1,0 +1,6 @@
+[submodule "data/antiscam/dialog_data"]
+	path = data/antiscam/dialog_data
+	url = https://github.com/ielm/dialog_data.git
+[submodule "data/dialog_data"]
+	path = data/dialog_data
+	url = https://github.com/ielm/dialog_data.git
