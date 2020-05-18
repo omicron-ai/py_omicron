@@ -13,6 +13,10 @@ IMAGE_DIR = f'{ROOT_DIR}/images'
 DIALOG_DIR = f"{DATA_DIR}/dialog"
 SCRIPT_DIR = f"{DATA_DIR}/script"
 
+# --- DATA DIRECTORIES
+ANTISCAM_SRC_PATH = f"{DATA_DIR}/src/AntiScam_annotated.txt"
+PERSUASION_SRC_PATH = f"{DATA_DIR}/src/PersuasionForGood_dialogs.csv"
+
 # --- SAMPLE ANNOTATION FILE PATHS
 SAMPLE_DIR = f"{DATA_DIR}/sample"
 SRC_PATH = f'{SAMPLE_DIR}/sample_annotation.txt'
