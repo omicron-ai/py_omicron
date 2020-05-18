@@ -4,8 +4,6 @@
 
 The following is a set of guidelines for contributing to Omicron. These are mostly guidelines, not rules. Use your best judgment, and feel free to propose changes to this document in a pull request. This document was plucked directly from the contributing document by our friends over at [Atom](https://github.com/atom/atom).
 
-The link to their [contribution file](https://github.com/atom/atom/blob/master/CONTRIBUTING.md) is just for my reference and will be removed in the future. 
-
 #### Table Of Contents
 
 [Code of Conduct](#code-of-conduct)
@@ -56,13 +54,9 @@ There are a few conventions for building mechanisms. They will be outlined here.
 
 This section guides you through submitting a bug report for Omicron. Following these guidelines helps maintainers understand your report :pencil: and reproduce the behavior :computer:. 
 
-Before creating bug reports, please check [this list](#before-submitting-a-bug-report) as you might find out that you don't need to create one. When you are creating a bug report, please [include as many details as possible](#how-do-i-submit-a-good-bug-report). Fill out [the required template](https://github.com/ielm/omicron/blob/master/.github/ISSUE_TEMPLATE/bug_report.md), the information it asks for helps us resolve issues faster.
+When you are creating a bug report, please [include as many details as possible](#how-do-i-submit-a-good-bug-report). Fill out [the required template](https://github.com/ielm/omicron/blob/master/.github/ISSUE_TEMPLATE/bug_report.md), the information it asks for helps us resolve issues faster.
 
 > **Note:** If you find a **Closed** issue that seems like it is the same thing that you're experiencing, open a new issue and include a link to the original issue in the body of your new one.
-
-#### Before Submitting A Bug Report
-
-* **Perform a [cursory search](https://github.com/search?q=+is%3Aissue+user%3Aatom)** to see if the problem has already been reported. If it has **and the issue is still open**, add a comment to the existing issue instead of opening a new one.
 
 #### How Do I Submit A (Good) Bug Report?
 
