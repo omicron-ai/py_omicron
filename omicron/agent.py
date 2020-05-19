@@ -76,7 +76,8 @@ class Agent:
         self.memory.add_input(input_turn, input_rep)
 
         if _verbose:
-            print(f"{INDENT}AGENT {self.xid}\t<INPUT>:\t{_signal['text']}")
+            print(f"{INDENT}AGENT {self.xid}\t<INPUT>:"
+                  f"\t{_signal['text']}")
 
     def output(self, _signal: dict, _verbose: bool = False):
         """
@@ -99,7 +100,9 @@ class Agent:
         self.memory.add_output(output_turn, output_rep)
 
         if _verbose:
-            print(f"{INDENT}AGENT {self.xid}\t<OUTPUT>:\t{_signal['intent']}({_signal['semantic_slot']}) -> {_signal['text']}")
+            print(
+                f"{INDENT}AGENT {self.xid}\t<OUTPUT>:"
+                f"\t{_signal['intent']}({_signal['semantic_slot']}) -> {_signal['text']}")
 
     def render_memory(self, filename: str = None):
         """Render memory as a DOT graph. (WIP)
@@ -143,6 +146,7 @@ class Agent:
 
 class Sentinel:
     """Abstract in-memory agent representation."""
+
     def __init__(self, seed):
         self.id = uuid.uuid5(OMICRON_NAMESPACE, f"{seed[1]}")
         self.agent = OrderedDict(zip(['SIMPLE', 'UUID'], seed))
@@ -157,6 +161,7 @@ class Sentinel:
 
 class Memory(nx.MultiDiGraph):
     """Internal graph representing agent memory."""
+
     def __init__(self, seed):
         super(Memory, self).__init__(rankdir="LR", mode="scale")
         self.sentinel = Sentinel(seed)
@@ -199,6 +204,7 @@ class Memory(nx.MultiDiGraph):
 
 class Context:
     """Internal representation of dialog context."""
+
     def __init__(self, n: int = 10, debug: bool = False):
         self._store = []
         self._n = n
@@ -352,5 +358,3 @@ class Topic:
         # return f"{self.id}"
         return f"<{self.__class__.__module__}.{self.__class__.__name__}: " \
                f"TOPIC-{self.index} at {hex(id(self))}>"
-
-
