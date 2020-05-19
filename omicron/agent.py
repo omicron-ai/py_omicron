@@ -12,13 +12,11 @@ from typing import Union
 from collections import OrderedDict
 import networkx as nx
 import uuid
-from omicron import stanza_nlp, OMICRON_NAMESPACE
-from omicron.constants import INDENT, IMAGE_DIR
-from omicron.nlp import get_tokens, get_topics
-from omicron.utilities import AtomicCounter, Origin
-from omicron.agenda import Agenda
-# import matplotlib.pyplot as plt
-# import matplotlib.pylab as pylab
+from omicron import OMICRON_NAMESPACE
+from omicron.utils.constants import INDENT, IMAGE_DIR
+from omicron.utils.nlp import get_tokens, get_topics
+from omicron.utils.utilities import AtomicCounter, Origin
+from omicron.engine.agenda import Agenda
 
 
 class Agent:
