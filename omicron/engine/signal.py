@@ -7,6 +7,8 @@ from omicron.utils.utilities import AtomicCounter
 class Signal:
 
     def __init__(self, seed):
+        self.id = uuid.uuid5(OMICRON_NAMESPACE, f"{seed}")
+        self.type = "SIGNAL"
         pass
 
 
