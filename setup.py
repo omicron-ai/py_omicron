@@ -1,11 +1,15 @@
 from setuptools import setup, find_packages
 
+with open("README.md", "r") as fh:
+    long_description = fh.read()
+
 setup(
     name="omicron",
     version="0.0.2",
     author="Ivan Leon",
     author_email="leoni@rpi.edu",
     description="An agent framework for training semantically-driven conversational agents.",
+    long_description=long_description,
     url="https://github.com/omicron-ai/omicron",
     packages=find_packages(),
 
