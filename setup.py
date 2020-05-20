@@ -14,8 +14,9 @@ setup(
     packages=find_packages(),
 
     install_requires=[
-        "nltk", 
-        "stanza"
+        "nltk==3.5",
+        "stanza==1.0.1",
+        "networkx==2.4"
     ],
 
     keywords="ai, agent",
