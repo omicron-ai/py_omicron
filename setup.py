@@ -12,9 +12,9 @@ setup(
 
     author="Ivan Leon",
     author_email="leoni@rpi.edu",
-    description="A semantically-driven language generation system.",
-    keywords="nlg, nlp, language",
+    description="An agent framework for training semantically-driven conversational agents.",
+    keywords="ai, agent",
     project_urls={
-        "Source Code": "https://github.com/ielm/omicron",
+        "Source Code": "https://github.com/omicron-ai/omicron",
     }
 )
