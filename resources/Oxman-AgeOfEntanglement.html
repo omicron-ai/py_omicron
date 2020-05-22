@@ -1,0 +1,1905 @@
+<html lang="en"><head><title>Age of Entanglement</title><meta charSet="utf-8"/><style type="text/css">@import url("https://use.typekit.net/kmi0tdo.css");
+.ProseMirror {
+  position: relative; }
+
+.ProseMirror {
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  white-space: break-spaces;
+  -webkit-font-variant-ligatures: none;
+  font-variant-ligatures: none;
+  font-feature-settings: "liga" 0;
+  /* the above doesn't seem to work in Edge */ }
+
+.ProseMirror pre {
+  white-space: pre-wrap; }
+
+.ProseMirror li {
+  position: relative; }
+
+.ProseMirror-hideselection *::selection {
+  background: transparent; }
+
+.ProseMirror-hideselection *::-moz-selection {
+  background: transparent; }
+
+.ProseMirror-hideselection {
+  caret-color: transparent; }
+
+.ProseMirror-selectednode {
+  outline: 2px solid #8cf; }
+
+/* Make sure li selections wrap around markers */
+li.ProseMirror-selectednode {
+  outline: none; }
+
+li.ProseMirror-selectednode:after {
+  content: "";
+  position: absolute;
+  left: -32px;
+  right: -2px;
+  top: -2px;
+  bottom: -2px;
+  border: 2px solid #8cf;
+  pointer-events: none; }
+
+.ProseMirror-gapcursor {
+  display: none;
+  pointer-events: none;
+  position: absolute; }
+
+.ProseMirror-gapcursor:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: -2px;
+  width: 20px;
+  border-top: 1px solid black;
+  animation: ProseMirror-cursor-blink 1.1s steps(2, start) infinite; }
+
+@keyframes ProseMirror-cursor-blink {
+  to {
+    visibility: hidden; } }
+
+.ProseMirror-focused .ProseMirror-gapcursor {
+  display: block; }
+
+.ProseMirror .tableWrapper {
+  overflow-x: auto; }
+
+.ProseMirror table {
+  border-collapse: collapse;
+  table-layout: fixed;
+  width: 100%;
+  overflow: hidden; }
+
+.ProseMirror td, .ProseMirror th {
+  vertical-align: top;
+  box-sizing: border-box;
+  position: relative; }
+
+.ProseMirror .column-resize-handle {
+  position: absolute;
+  right: -2px;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  z-index: 20;
+  background-color: #adf;
+  pointer-events: none; }
+
+.ProseMirror.resize-cursor {
+  cursor: ew-resize;
+  cursor: col-resize; }
+
+/* Give selected cells a blue overlay */
+.ProseMirror .selectedCell:after {
+  z-index: 2;
+  position: absolute;
+  content: "";
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: rgba(200, 200, 255, 0.4);
+  pointer-events: none; }
+
+/* stylelint-disable font-family-no-missing-generic-family-keyword */
+@font-face {
+  font-family: 'KaTeX_AMS';
+  src: url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/fonts/KaTeX_AMS-Regular.woff2) format("woff2"), url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/fonts/KaTeX_AMS-Regular.woff) format("woff"), url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/fonts/KaTeX_AMS-Regular.ttf) format("truetype");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'KaTeX_Caligraphic';
+  src: url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/fonts/KaTeX_Caligraphic-Bold.woff2) format("woff2"), url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/fonts/KaTeX_Caligraphic-Bold.woff) format("woff"), url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/fonts/KaTeX_Caligraphic-Bold.ttf) format("truetype");
+  font-weight: bold;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'KaTeX_Caligraphic';
+  src: url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/fonts/KaTeX_Caligraphic-Regular.woff2) format("woff2"), url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/fonts/KaTeX_Caligraphic-Regular.woff) format("woff"), url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/fonts/KaTeX_Caligraphic-Regular.ttf) format("truetype");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'KaTeX_Fraktur';
+  src: url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/fonts/KaTeX_Fraktur-Bold.woff2) format("woff2"), url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/fonts/KaTeX_Fraktur-Bold.woff) format("woff"), url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/fonts/KaTeX_Fraktur-Bold.ttf) format("truetype");
+  font-weight: bold;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'KaTeX_Fraktur';
+  src: url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/fonts/KaTeX_Fraktur-Regular.woff2) format("woff2"), url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/fonts/KaTeX_Fraktur-Regular.woff) format("woff"), url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/fonts/KaTeX_Fraktur-Regular.ttf) format("truetype");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'KaTeX_Main';
+  src: url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/fonts/KaTeX_Main-Bold.woff2) format("woff2"), url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/fonts/KaTeX_Main-Bold.woff) format("woff"), url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/fonts/KaTeX_Main-Bold.ttf) format("truetype");
+  font-weight: bold;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'KaTeX_Main';
+  src: url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/fonts/KaTeX_Main-BoldItalic.woff2) format("woff2"), url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/fonts/KaTeX_Main-BoldItalic.woff) format("woff"), url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/fonts/KaTeX_Main-BoldItalic.ttf) format("truetype");
+  font-weight: bold;
+  font-style: italic; }
+
+@font-face {
+  font-family: 'KaTeX_Main';
+  src: url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/fonts/KaTeX_Main-Italic.woff2) format("woff2"), url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/fonts/KaTeX_Main-Italic.woff) format("woff"), url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/fonts/KaTeX_Main-Italic.ttf) format("truetype");
+  font-weight: normal;
+  font-style: italic; }
+
+@font-face {
+  font-family: 'KaTeX_Main';
+  src: url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/fonts/KaTeX_Main-Regular.woff2) format("woff2"), url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/fonts/KaTeX_Main-Regular.woff) format("woff"), url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/fonts/KaTeX_Main-Regular.ttf) format("truetype");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'KaTeX_Math';
+  src: url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/fonts/KaTeX_Math-BoldItalic.woff2) format("woff2"), url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/fonts/KaTeX_Math-BoldItalic.woff) format("woff"), url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/fonts/KaTeX_Math-BoldItalic.ttf) format("truetype");
+  font-weight: bold;
+  font-style: italic; }
+
+@font-face {
+  font-family: 'KaTeX_Math';
+  src: url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/fonts/KaTeX_Math-Italic.woff2) format("woff2"), url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/fonts/KaTeX_Math-Italic.woff) format("woff"), url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/fonts/KaTeX_Math-Italic.ttf) format("truetype");
+  font-weight: normal;
+  font-style: italic; }
+
+@font-face {
+  font-family: 'KaTeX_SansSerif';
+  src: url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/fonts/KaTeX_SansSerif-Bold.woff2) format("woff2"), url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/fonts/KaTeX_SansSerif-Bold.woff) format("woff"), url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/fonts/KaTeX_SansSerif-Bold.ttf) format("truetype");
+  font-weight: bold;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'KaTeX_SansSerif';
+  src: url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/fonts/KaTeX_SansSerif-Italic.woff2) format("woff2"), url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/fonts/KaTeX_SansSerif-Italic.woff) format("woff"), url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/fonts/KaTeX_SansSerif-Italic.ttf) format("truetype");
+  font-weight: normal;
+  font-style: italic; }
+
+@font-face {
+  font-family: 'KaTeX_SansSerif';
+  src: url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/fonts/KaTeX_SansSerif-Regular.woff2) format("woff2"), url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/fonts/KaTeX_SansSerif-Regular.woff) format("woff"), url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/fonts/KaTeX_SansSerif-Regular.ttf) format("truetype");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'KaTeX_Script';
+  src: url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/fonts/KaTeX_Script-Regular.woff2) format("woff2"), url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/fonts/KaTeX_Script-Regular.woff) format("woff"), url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/fonts/KaTeX_Script-Regular.ttf) format("truetype");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'KaTeX_Size1';
+  src: url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/fonts/KaTeX_Size1-Regular.woff2) format("woff2"), url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/fonts/KaTeX_Size1-Regular.woff) format("woff"), url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/fonts/KaTeX_Size1-Regular.ttf) format("truetype");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'KaTeX_Size2';
+  src: url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/fonts/KaTeX_Size2-Regular.woff2) format("woff2"), url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/fonts/KaTeX_Size2-Regular.woff) format("woff"), url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/fonts/KaTeX_Size2-Regular.ttf) format("truetype");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'KaTeX_Size3';
+  src: url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/fonts/KaTeX_Size3-Regular.woff2) format("woff2"), url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/fonts/KaTeX_Size3-Regular.woff) format("woff"), url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/fonts/KaTeX_Size3-Regular.ttf) format("truetype");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'KaTeX_Size4';
+  src: url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/fonts/KaTeX_Size4-Regular.woff2) format("woff2"), url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/fonts/KaTeX_Size4-Regular.woff) format("woff"), url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/fonts/KaTeX_Size4-Regular.ttf) format("truetype");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'KaTeX_Typewriter';
+  src: url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/fonts/KaTeX_Typewriter-Regular.woff2) format("woff2"), url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/fonts/KaTeX_Typewriter-Regular.woff) format("woff"), url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/fonts/KaTeX_Typewriter-Regular.ttf) format("truetype");
+  font-weight: normal;
+  font-style: normal; }
+
+.katex {
+  font: normal 1.21em KaTeX_Main, Times New Roman, serif;
+  line-height: 1.2;
+  text-indent: 0;
+  text-rendering: auto; }
+
+.katex * {
+  -ms-high-contrast-adjust: none !important; }
+
+.katex .katex-version::after {
+  content: "0.10.2"; }
+
+.katex .katex-mathml {
+  position: absolute;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 0;
+  border: 0;
+  height: 1px;
+  width: 1px;
+  overflow: hidden; }
+
+.katex .katex-html {
+  /* \newline is an empty block at top level, between .base elements */ }
+
+.katex .katex-html > .newline {
+  display: block; }
+
+.katex .base {
+  position: relative;
+  display: inline-block;
+  white-space: nowrap;
+  width: min-content; }
+
+.katex .strut {
+  display: inline-block; }
+
+.katex .textbf {
+  font-weight: bold; }
+
+.katex .textit {
+  font-style: italic; }
+
+.katex .textrm {
+  font-family: KaTeX_Main; }
+
+.katex .textsf {
+  font-family: KaTeX_SansSerif; }
+
+.katex .texttt {
+  font-family: KaTeX_Typewriter; }
+
+.katex .mathdefault {
+  font-family: KaTeX_Math;
+  font-style: italic; }
+
+.katex .mathit {
+  font-family: KaTeX_Main;
+  font-style: italic; }
+
+.katex .mathrm {
+  font-style: normal; }
+
+.katex .mathbf {
+  font-family: KaTeX_Main;
+  font-weight: bold; }
+
+.katex .boldsymbol {
+  font-family: KaTeX_Math;
+  font-weight: bold;
+  font-style: italic; }
+
+.katex .amsrm {
+  font-family: KaTeX_AMS; }
+
+.katex .mathbb,
+.katex .textbb {
+  font-family: KaTeX_AMS; }
+
+.katex .mathcal {
+  font-family: KaTeX_Caligraphic; }
+
+.katex .mathfrak,
+.katex .textfrak {
+  font-family: KaTeX_Fraktur; }
+
+.katex .mathtt {
+  font-family: KaTeX_Typewriter; }
+
+.katex .mathscr,
+.katex .textscr {
+  font-family: KaTeX_Script; }
+
+.katex .mathsf,
+.katex .textsf {
+  font-family: KaTeX_SansSerif; }
+
+.katex .mathboldsf,
+.katex .textboldsf {
+  font-family: KaTeX_SansSerif;
+  font-weight: bold; }
+
+.katex .mathitsf,
+.katex .textitsf {
+  font-family: KaTeX_SansSerif;
+  font-style: italic; }
+
+.katex .mainrm {
+  font-family: KaTeX_Main;
+  font-style: normal; }
+
+.katex .vlist-t {
+  display: inline-table;
+  table-layout: fixed; }
+
+.katex .vlist-r {
+  display: table-row; }
+
+.katex .vlist {
+  display: table-cell;
+  vertical-align: bottom;
+  position: relative; }
+
+.katex .vlist > span {
+  display: block;
+  height: 0;
+  position: relative; }
+
+.katex .vlist > span > span {
+  display: inline-block; }
+
+.katex .vlist > span > .pstrut {
+  overflow: hidden;
+  width: 0; }
+
+.katex .vlist-t2 {
+  margin-right: -2px; }
+
+.katex .vlist-s {
+  display: table-cell;
+  vertical-align: bottom;
+  font-size: 1px;
+  width: 2px;
+  min-width: 2px; }
+
+.katex .msupsub {
+  text-align: left; }
+
+.katex .mfrac > span > span {
+  text-align: center; }
+
+.katex .mfrac .frac-line {
+  display: inline-block;
+  width: 100%;
+  border-bottom-style: solid; }
+
+.katex .mfrac .frac-line,
+.katex .overline .overline-line,
+.katex .underline .underline-line,
+.katex .hline,
+.katex .hdashline,
+.katex .rule {
+  min-height: 1px; }
+
+.katex .mspace {
+  display: inline-block; }
+
+.katex .llap,
+.katex .rlap,
+.katex .clap {
+  width: 0;
+  position: relative; }
+
+.katex .llap > .inner,
+.katex .rlap > .inner,
+.katex .clap > .inner {
+  position: absolute; }
+
+.katex .llap > .fix,
+.katex .rlap > .fix,
+.katex .clap > .fix {
+  display: inline-block; }
+
+.katex .llap > .inner {
+  right: 0; }
+
+.katex .rlap > .inner,
+.katex .clap > .inner {
+  left: 0; }
+
+.katex .clap > .inner > span {
+  margin-left: -50%;
+  margin-right: 50%; }
+
+.katex .rule {
+  display: inline-block;
+  border: solid 0;
+  position: relative; }
+
+.katex .overline .overline-line,
+.katex .underline .underline-line,
+.katex .hline {
+  display: inline-block;
+  width: 100%;
+  border-bottom-style: solid; }
+
+.katex .hdashline {
+  display: inline-block;
+  width: 100%;
+  border-bottom-style: dashed; }
+
+.katex .sqrt > .root {
+  margin-left: 0.27777778em;
+  margin-right: -0.55555556em; }
+
+.katex .sizing,
+.katex .fontsize-ensurer {
+  display: inline-block; }
+
+.katex .sizing.reset-size1.size1,
+.katex .fontsize-ensurer.reset-size1.size1 {
+  font-size: 1em; }
+
+.katex .sizing.reset-size1.size2,
+.katex .fontsize-ensurer.reset-size1.size2 {
+  font-size: 1.2em; }
+
+.katex .sizing.reset-size1.size3,
+.katex .fontsize-ensurer.reset-size1.size3 {
+  font-size: 1.4em; }
+
+.katex .sizing.reset-size1.size4,
+.katex .fontsize-ensurer.reset-size1.size4 {
+  font-size: 1.6em; }
+
+.katex .sizing.reset-size1.size5,
+.katex .fontsize-ensurer.reset-size1.size5 {
+  font-size: 1.8em; }
+
+.katex .sizing.reset-size1.size6,
+.katex .fontsize-ensurer.reset-size1.size6 {
+  font-size: 2em; }
+
+.katex .sizing.reset-size1.size7,
+.katex .fontsize-ensurer.reset-size1.size7 {
+  font-size: 2.4em; }
+
+.katex .sizing.reset-size1.size8,
+.katex .fontsize-ensurer.reset-size1.size8 {
+  font-size: 2.88em; }
+
+.katex .sizing.reset-size1.size9,
+.katex .fontsize-ensurer.reset-size1.size9 {
+  font-size: 3.456em; }
+
+.katex .sizing.reset-size1.size10,
+.katex .fontsize-ensurer.reset-size1.size10 {
+  font-size: 4.148em; }
+
+.katex .sizing.reset-size1.size11,
+.katex .fontsize-ensurer.reset-size1.size11 {
+  font-size: 4.976em; }
+
+.katex .sizing.reset-size2.size1,
+.katex .fontsize-ensurer.reset-size2.size1 {
+  font-size: 0.83333333em; }
+
+.katex .sizing.reset-size2.size2,
+.katex .fontsize-ensurer.reset-size2.size2 {
+  font-size: 1em; }
+
+.katex .sizing.reset-size2.size3,
+.katex .fontsize-ensurer.reset-size2.size3 {
+  font-size: 1.16666667em; }
+
+.katex .sizing.reset-size2.size4,
+.katex .fontsize-ensurer.reset-size2.size4 {
+  font-size: 1.33333333em; }
+
+.katex .sizing.reset-size2.size5,
+.katex .fontsize-ensurer.reset-size2.size5 {
+  font-size: 1.5em; }
+
+.katex .sizing.reset-size2.size6,
+.katex .fontsize-ensurer.reset-size2.size6 {
+  font-size: 1.66666667em; }
+
+.katex .sizing.reset-size2.size7,
+.katex .fontsize-ensurer.reset-size2.size7 {
+  font-size: 2em; }
+
+.katex .sizing.reset-size2.size8,
+.katex .fontsize-ensurer.reset-size2.size8 {
+  font-size: 2.4em; }
+
+.katex .sizing.reset-size2.size9,
+.katex .fontsize-ensurer.reset-size2.size9 {
+  font-size: 2.88em; }
+
+.katex .sizing.reset-size2.size10,
+.katex .fontsize-ensurer.reset-size2.size10 {
+  font-size: 3.45666667em; }
+
+.katex .sizing.reset-size2.size11,
+.katex .fontsize-ensurer.reset-size2.size11 {
+  font-size: 4.14666667em; }
+
+.katex .sizing.reset-size3.size1,
+.katex .fontsize-ensurer.reset-size3.size1 {
+  font-size: 0.71428571em; }
+
+.katex .sizing.reset-size3.size2,
+.katex .fontsize-ensurer.reset-size3.size2 {
+  font-size: 0.85714286em; }
+
+.katex .sizing.reset-size3.size3,
+.katex .fontsize-ensurer.reset-size3.size3 {
+  font-size: 1em; }
+
+.katex .sizing.reset-size3.size4,
+.katex .fontsize-ensurer.reset-size3.size4 {
+  font-size: 1.14285714em; }
+
+.katex .sizing.reset-size3.size5,
+.katex .fontsize-ensurer.reset-size3.size5 {
+  font-size: 1.28571429em; }
+
+.katex .sizing.reset-size3.size6,
+.katex .fontsize-ensurer.reset-size3.size6 {
+  font-size: 1.42857143em; }
+
+.katex .sizing.reset-size3.size7,
+.katex .fontsize-ensurer.reset-size3.size7 {
+  font-size: 1.71428571em; }
+
+.katex .sizing.reset-size3.size8,
+.katex .fontsize-ensurer.reset-size3.size8 {
+  font-size: 2.05714286em; }
+
+.katex .sizing.reset-size3.size9,
+.katex .fontsize-ensurer.reset-size3.size9 {
+  font-size: 2.46857143em; }
+
+.katex .sizing.reset-size3.size10,
+.katex .fontsize-ensurer.reset-size3.size10 {
+  font-size: 2.96285714em; }
+
+.katex .sizing.reset-size3.size11,
+.katex .fontsize-ensurer.reset-size3.size11 {
+  font-size: 3.55428571em; }
+
+.katex .sizing.reset-size4.size1,
+.katex .fontsize-ensurer.reset-size4.size1 {
+  font-size: 0.625em; }
+
+.katex .sizing.reset-size4.size2,
+.katex .fontsize-ensurer.reset-size4.size2 {
+  font-size: 0.75em; }
+
+.katex .sizing.reset-size4.size3,
+.katex .fontsize-ensurer.reset-size4.size3 {
+  font-size: 0.875em; }
+
+.katex .sizing.reset-size4.size4,
+.katex .fontsize-ensurer.reset-size4.size4 {
+  font-size: 1em; }
+
+.katex .sizing.reset-size4.size5,
+.katex .fontsize-ensurer.reset-size4.size5 {
+  font-size: 1.125em; }
+
+.katex .sizing.reset-size4.size6,
+.katex .fontsize-ensurer.reset-size4.size6 {
+  font-size: 1.25em; }
+
+.katex .sizing.reset-size4.size7,
+.katex .fontsize-ensurer.reset-size4.size7 {
+  font-size: 1.5em; }
+
+.katex .sizing.reset-size4.size8,
+.katex .fontsize-ensurer.reset-size4.size8 {
+  font-size: 1.8em; }
+
+.katex .sizing.reset-size4.size9,
+.katex .fontsize-ensurer.reset-size4.size9 {
+  font-size: 2.16em; }
+
+.katex .sizing.reset-size4.size10,
+.katex .fontsize-ensurer.reset-size4.size10 {
+  font-size: 2.5925em; }
+
+.katex .sizing.reset-size4.size11,
+.katex .fontsize-ensurer.reset-size4.size11 {
+  font-size: 3.11em; }
+
+.katex .sizing.reset-size5.size1,
+.katex .fontsize-ensurer.reset-size5.size1 {
+  font-size: 0.55555556em; }
+
+.katex .sizing.reset-size5.size2,
+.katex .fontsize-ensurer.reset-size5.size2 {
+  font-size: 0.66666667em; }
+
+.katex .sizing.reset-size5.size3,
+.katex .fontsize-ensurer.reset-size5.size3 {
+  font-size: 0.77777778em; }
+
+.katex .sizing.reset-size5.size4,
+.katex .fontsize-ensurer.reset-size5.size4 {
+  font-size: 0.88888889em; }
+
+.katex .sizing.reset-size5.size5,
+.katex .fontsize-ensurer.reset-size5.size5 {
+  font-size: 1em; }
+
+.katex .sizing.reset-size5.size6,
+.katex .fontsize-ensurer.reset-size5.size6 {
+  font-size: 1.11111111em; }
+
+.katex .sizing.reset-size5.size7,
+.katex .fontsize-ensurer.reset-size5.size7 {
+  font-size: 1.33333333em; }
+
+.katex .sizing.reset-size5.size8,
+.katex .fontsize-ensurer.reset-size5.size8 {
+  font-size: 1.6em; }
+
+.katex .sizing.reset-size5.size9,
+.katex .fontsize-ensurer.reset-size5.size9 {
+  font-size: 1.92em; }
+
+.katex .sizing.reset-size5.size10,
+.katex .fontsize-ensurer.reset-size5.size10 {
+  font-size: 2.30444444em; }
+
+.katex .sizing.reset-size5.size11,
+.katex .fontsize-ensurer.reset-size5.size11 {
+  font-size: 2.76444444em; }
+
+.katex .sizing.reset-size6.size1,
+.katex .fontsize-ensurer.reset-size6.size1 {
+  font-size: 0.5em; }
+
+.katex .sizing.reset-size6.size2,
+.katex .fontsize-ensurer.reset-size6.size2 {
+  font-size: 0.6em; }
+
+.katex .sizing.reset-size6.size3,
+.katex .fontsize-ensurer.reset-size6.size3 {
+  font-size: 0.7em; }
+
+.katex .sizing.reset-size6.size4,
+.katex .fontsize-ensurer.reset-size6.size4 {
+  font-size: 0.8em; }
+
+.katex .sizing.reset-size6.size5,
+.katex .fontsize-ensurer.reset-size6.size5 {
+  font-size: 0.9em; }
+
+.katex .sizing.reset-size6.size6,
+.katex .fontsize-ensurer.reset-size6.size6 {
+  font-size: 1em; }
+
+.katex .sizing.reset-size6.size7,
+.katex .fontsize-ensurer.reset-size6.size7 {
+  font-size: 1.2em; }
+
+.katex .sizing.reset-size6.size8,
+.katex .fontsize-ensurer.reset-size6.size8 {
+  font-size: 1.44em; }
+
+.katex .sizing.reset-size6.size9,
+.katex .fontsize-ensurer.reset-size6.size9 {
+  font-size: 1.728em; }
+
+.katex .sizing.reset-size6.size10,
+.katex .fontsize-ensurer.reset-size6.size10 {
+  font-size: 2.074em; }
+
+.katex .sizing.reset-size6.size11,
+.katex .fontsize-ensurer.reset-size6.size11 {
+  font-size: 2.488em; }
+
+.katex .sizing.reset-size7.size1,
+.katex .fontsize-ensurer.reset-size7.size1 {
+  font-size: 0.41666667em; }
+
+.katex .sizing.reset-size7.size2,
+.katex .fontsize-ensurer.reset-size7.size2 {
+  font-size: 0.5em; }
+
+.katex .sizing.reset-size7.size3,
+.katex .fontsize-ensurer.reset-size7.size3 {
+  font-size: 0.58333333em; }
+
+.katex .sizing.reset-size7.size4,
+.katex .fontsize-ensurer.reset-size7.size4 {
+  font-size: 0.66666667em; }
+
+.katex .sizing.reset-size7.size5,
+.katex .fontsize-ensurer.reset-size7.size5 {
+  font-size: 0.75em; }
+
+.katex .sizing.reset-size7.size6,
+.katex .fontsize-ensurer.reset-size7.size6 {
+  font-size: 0.83333333em; }
+
+.katex .sizing.reset-size7.size7,
+.katex .fontsize-ensurer.reset-size7.size7 {
+  font-size: 1em; }
+
+.katex .sizing.reset-size7.size8,
+.katex .fontsize-ensurer.reset-size7.size8 {
+  font-size: 1.2em; }
+
+.katex .sizing.reset-size7.size9,
+.katex .fontsize-ensurer.reset-size7.size9 {
+  font-size: 1.44em; }
+
+.katex .sizing.reset-size7.size10,
+.katex .fontsize-ensurer.reset-size7.size10 {
+  font-size: 1.72833333em; }
+
+.katex .sizing.reset-size7.size11,
+.katex .fontsize-ensurer.reset-size7.size11 {
+  font-size: 2.07333333em; }
+
+.katex .sizing.reset-size8.size1,
+.katex .fontsize-ensurer.reset-size8.size1 {
+  font-size: 0.34722222em; }
+
+.katex .sizing.reset-size8.size2,
+.katex .fontsize-ensurer.reset-size8.size2 {
+  font-size: 0.41666667em; }
+
+.katex .sizing.reset-size8.size3,
+.katex .fontsize-ensurer.reset-size8.size3 {
+  font-size: 0.48611111em; }
+
+.katex .sizing.reset-size8.size4,
+.katex .fontsize-ensurer.reset-size8.size4 {
+  font-size: 0.55555556em; }
+
+.katex .sizing.reset-size8.size5,
+.katex .fontsize-ensurer.reset-size8.size5 {
+  font-size: 0.625em; }
+
+.katex .sizing.reset-size8.size6,
+.katex .fontsize-ensurer.reset-size8.size6 {
+  font-size: 0.69444444em; }
+
+.katex .sizing.reset-size8.size7,
+.katex .fontsize-ensurer.reset-size8.size7 {
+  font-size: 0.83333333em; }
+
+.katex .sizing.reset-size8.size8,
+.katex .fontsize-ensurer.reset-size8.size8 {
+  font-size: 1em; }
+
+.katex .sizing.reset-size8.size9,
+.katex .fontsize-ensurer.reset-size8.size9 {
+  font-size: 1.2em; }
+
+.katex .sizing.reset-size8.size10,
+.katex .fontsize-ensurer.reset-size8.size10 {
+  font-size: 1.44027778em; }
+
+.katex .sizing.reset-size8.size11,
+.katex .fontsize-ensurer.reset-size8.size11 {
+  font-size: 1.72777778em; }
+
+.katex .sizing.reset-size9.size1,
+.katex .fontsize-ensurer.reset-size9.size1 {
+  font-size: 0.28935185em; }
+
+.katex .sizing.reset-size9.size2,
+.katex .fontsize-ensurer.reset-size9.size2 {
+  font-size: 0.34722222em; }
+
+.katex .sizing.reset-size9.size3,
+.katex .fontsize-ensurer.reset-size9.size3 {
+  font-size: 0.40509259em; }
+
+.katex .sizing.reset-size9.size4,
+.katex .fontsize-ensurer.reset-size9.size4 {
+  font-size: 0.46296296em; }
+
+.katex .sizing.reset-size9.size5,
+.katex .fontsize-ensurer.reset-size9.size5 {
+  font-size: 0.52083333em; }
+
+.katex .sizing.reset-size9.size6,
+.katex .fontsize-ensurer.reset-size9.size6 {
+  font-size: 0.5787037em; }
+
+.katex .sizing.reset-size9.size7,
+.katex .fontsize-ensurer.reset-size9.size7 {
+  font-size: 0.69444444em; }
+
+.katex .sizing.reset-size9.size8,
+.katex .fontsize-ensurer.reset-size9.size8 {
+  font-size: 0.83333333em; }
+
+.katex .sizing.reset-size9.size9,
+.katex .fontsize-ensurer.reset-size9.size9 {
+  font-size: 1em; }
+
+.katex .sizing.reset-size9.size10,
+.katex .fontsize-ensurer.reset-size9.size10 {
+  font-size: 1.20023148em; }
+
+.katex .sizing.reset-size9.size11,
+.katex .fontsize-ensurer.reset-size9.size11 {
+  font-size: 1.43981481em; }
+
+.katex .sizing.reset-size10.size1,
+.katex .fontsize-ensurer.reset-size10.size1 {
+  font-size: 0.24108004em; }
+
+.katex .sizing.reset-size10.size2,
+.katex .fontsize-ensurer.reset-size10.size2 {
+  font-size: 0.28929605em; }
+
+.katex .sizing.reset-size10.size3,
+.katex .fontsize-ensurer.reset-size10.size3 {
+  font-size: 0.33751205em; }
+
+.katex .sizing.reset-size10.size4,
+.katex .fontsize-ensurer.reset-size10.size4 {
+  font-size: 0.38572806em; }
+
+.katex .sizing.reset-size10.size5,
+.katex .fontsize-ensurer.reset-size10.size5 {
+  font-size: 0.43394407em; }
+
+.katex .sizing.reset-size10.size6,
+.katex .fontsize-ensurer.reset-size10.size6 {
+  font-size: 0.48216008em; }
+
+.katex .sizing.reset-size10.size7,
+.katex .fontsize-ensurer.reset-size10.size7 {
+  font-size: 0.57859209em; }
+
+.katex .sizing.reset-size10.size8,
+.katex .fontsize-ensurer.reset-size10.size8 {
+  font-size: 0.69431051em; }
+
+.katex .sizing.reset-size10.size9,
+.katex .fontsize-ensurer.reset-size10.size9 {
+  font-size: 0.83317261em; }
+
+.katex .sizing.reset-size10.size10,
+.katex .fontsize-ensurer.reset-size10.size10 {
+  font-size: 1em; }
+
+.katex .sizing.reset-size10.size11,
+.katex .fontsize-ensurer.reset-size10.size11 {
+  font-size: 1.19961427em; }
+
+.katex .sizing.reset-size11.size1,
+.katex .fontsize-ensurer.reset-size11.size1 {
+  font-size: 0.20096463em; }
+
+.katex .sizing.reset-size11.size2,
+.katex .fontsize-ensurer.reset-size11.size2 {
+  font-size: 0.24115756em; }
+
+.katex .sizing.reset-size11.size3,
+.katex .fontsize-ensurer.reset-size11.size3 {
+  font-size: 0.28135048em; }
+
+.katex .sizing.reset-size11.size4,
+.katex .fontsize-ensurer.reset-size11.size4 {
+  font-size: 0.32154341em; }
+
+.katex .sizing.reset-size11.size5,
+.katex .fontsize-ensurer.reset-size11.size5 {
+  font-size: 0.36173633em; }
+
+.katex .sizing.reset-size11.size6,
+.katex .fontsize-ensurer.reset-size11.size6 {
+  font-size: 0.40192926em; }
+
+.katex .sizing.reset-size11.size7,
+.katex .fontsize-ensurer.reset-size11.size7 {
+  font-size: 0.48231511em; }
+
+.katex .sizing.reset-size11.size8,
+.katex .fontsize-ensurer.reset-size11.size8 {
+  font-size: 0.57877814em; }
+
+.katex .sizing.reset-size11.size9,
+.katex .fontsize-ensurer.reset-size11.size9 {
+  font-size: 0.69453376em; }
+
+.katex .sizing.reset-size11.size10,
+.katex .fontsize-ensurer.reset-size11.size10 {
+  font-size: 0.83360129em; }
+
+.katex .sizing.reset-size11.size11,
+.katex .fontsize-ensurer.reset-size11.size11 {
+  font-size: 1em; }
+
+.katex .delimsizing.size1 {
+  font-family: KaTeX_Size1; }
+
+.katex .delimsizing.size2 {
+  font-family: KaTeX_Size2; }
+
+.katex .delimsizing.size3 {
+  font-family: KaTeX_Size3; }
+
+.katex .delimsizing.size4 {
+  font-family: KaTeX_Size4; }
+
+.katex .delimsizing.mult .delim-size1 > span {
+  font-family: KaTeX_Size1; }
+
+.katex .delimsizing.mult .delim-size4 > span {
+  font-family: KaTeX_Size4; }
+
+.katex .nulldelimiter {
+  display: inline-block;
+  width: 0.12em; }
+
+.katex .delimcenter {
+  position: relative; }
+
+.katex .op-symbol {
+  position: relative; }
+
+.katex .op-symbol.small-op {
+  font-family: KaTeX_Size1; }
+
+.katex .op-symbol.large-op {
+  font-family: KaTeX_Size2; }
+
+.katex .op-limits > .vlist-t {
+  text-align: center; }
+
+.katex .accent > .vlist-t {
+  text-align: center; }
+
+.katex .accent .accent-body {
+  position: relative; }
+
+.katex .accent .accent-body:not(.accent-full) {
+  width: 0; }
+
+.katex .overlay {
+  display: block; }
+
+.katex .mtable .vertical-separator {
+  display: inline-block;
+  margin: 0 -0.025em;
+  border-right: 0.05em solid;
+  min-width: 1px; }
+
+.katex .mtable .vs-dashed {
+  border-right: 0.05em dashed; }
+
+.katex .mtable .arraycolsep {
+  display: inline-block; }
+
+.katex .mtable .col-align-c > .vlist-t {
+  text-align: center; }
+
+.katex .mtable .col-align-l > .vlist-t {
+  text-align: left; }
+
+.katex .mtable .col-align-r > .vlist-t {
+  text-align: right; }
+
+.katex .svg-align {
+  text-align: left; }
+
+.katex svg {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: inherit;
+  fill: currentColor;
+  stroke: currentColor;
+  fill-rule: nonzero;
+  fill-opacity: 1;
+  stroke-width: 1;
+  stroke-linecap: butt;
+  stroke-linejoin: miter;
+  stroke-miterlimit: 4;
+  stroke-dasharray: none;
+  stroke-dashoffset: 0;
+  stroke-opacity: 1; }
+
+.katex svg path {
+  stroke: none; }
+
+.katex img {
+  border-style: none;
+  min-width: 0;
+  min-height: 0;
+  max-width: none;
+  max-height: none; }
+
+.katex .stretchy {
+  width: 100%;
+  display: block;
+  position: relative;
+  overflow: hidden; }
+
+.katex .stretchy::before,
+.katex .stretchy::after {
+  content: ""; }
+
+.katex .hide-tail {
+  width: 100%;
+  position: relative;
+  overflow: hidden; }
+
+.katex .halfarrow-left {
+  position: absolute;
+  left: 0;
+  width: 50.2%;
+  overflow: hidden; }
+
+.katex .halfarrow-right {
+  position: absolute;
+  right: 0;
+  width: 50.2%;
+  overflow: hidden; }
+
+.katex .brace-left {
+  position: absolute;
+  left: 0;
+  width: 25.1%;
+  overflow: hidden; }
+
+.katex .brace-center {
+  position: absolute;
+  left: 25%;
+  width: 50%;
+  overflow: hidden; }
+
+.katex .brace-right {
+  position: absolute;
+  right: 0;
+  width: 25.1%;
+  overflow: hidden; }
+
+.katex .x-arrow-pad {
+  padding: 0 0.5em; }
+
+.katex .x-arrow,
+.katex .mover,
+.katex .munder {
+  text-align: center; }
+
+.katex .boxpad {
+  padding: 0 0.3em 0 0.3em; }
+
+.katex .fbox,
+.katex .fcolorbox {
+  box-sizing: border-box;
+  border: 0.04em solid; }
+
+.katex .cancel-pad {
+  padding: 0 0.2em 0 0.2em; }
+
+.katex .cancel-lap {
+  margin-left: -0.2em;
+  margin-right: -0.2em; }
+
+.katex .sout {
+  border-bottom-style: solid;
+  border-bottom-width: 0.08em; }
+
+.katex-display {
+  display: block;
+  margin: 1em 0;
+  text-align: center; }
+
+.katex-display > .katex {
+  display: block;
+  text-align: center;
+  white-space: nowrap; }
+
+.katex-display > .katex > .katex-html {
+  display: block;
+  position: relative; }
+
+.katex-display > .katex > .katex-html > .tag {
+  position: absolute;
+  right: 0; }
+
+.katex-display.leqno > .katex > .katex-html > .tag {
+  left: 0;
+  right: auto; }
+
+.katex-display.fleqn > .katex {
+  text-align: left; }
+
+[data-node-type='math-inline'] {
+  font-size: 0.9em;
+  display: inline-block;
+  vertical-align: middle;
+  max-width: 100%; }
+
+[data-node-type='math-block'] {
+  font-size: 20px;
+  display: block;
+  text-align: center;
+  max-width: 100%; }
+
+.editor {
+  /*! fileicon.css v0.1.1 | MIT License | github.com/picturepan2/fileicon.css */
+  /* fileicon.basic */
+  /* fileicons */
+  /* fileicon.types */
+  /* This clunky table, tableWrapper thing is because */
+  /* isReadOnly removes the wrapping div, so margins don't */
+  /* collapse as expected in all situations. */ }
+  .editor:focus {
+    outline: none !important; }
+  .editor .prosemirror-placeholder {
+    opacity: 0.5;
+    white-space: nowrap;
+    position: relative; }
+    .editor .prosemirror-placeholder:after {
+      position: absolute;
+      top: 0;
+      content: attr(data-content); }
+  .editor .ProseMirror-selectednode {
+    outline: 2px solid #bbbdc0; }
+  .editor.read-only .ProseMirror-selectednode {
+    outline: 0px solid #bbbdc0; }
+  .editor h1 a,
+  .editor h2 a,
+  .editor h3 a,
+  .editor h4 a,
+  .editor h5 a,
+  .editor h6 a {
+    text-decoration: none;
+    color: inherit; }
+  .editor span.footnote {
+    vertical-align: super;
+    font-size: 0.85em; }
+  .editor span.citation {
+    font-weight: bold; }
+  .editor table {
+    /* Prosemirror requires white-space: pre-wrap, but it's overriden by the quirks.css */
+    /* built-in that Firefox provides, breaking the editor. */
+    /* See https://github.com/ProseMirror/prosemirror/issues/651#issuecomment-313436150 */
+    white-space: pre-wrap !important; }
+  .editor .collab-cursor {
+    position: relative;
+    font-family: -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Open Sans", "Helvetica Neue", sans-serif;
+    color: white;
+    user-select: none;
+    vertical-align: top; }
+    .editor .collab-cursor .inner-bar {
+      position: absolute;
+      height: calc(1em + 5px);
+      width: 2px;
+      background-color: #001996;
+      bottom: 0px;
+      left: 0; }
+      .editor .collab-cursor .inner-bar .inner-circle-small {
+        position: absolute;
+        height: 8px;
+        width: 8px;
+        border-radius: 8px;
+        background-color: #001996;
+        bottom: calc(100% + 0px);
+        left: -3px; }
+      .editor .collab-cursor .inner-bar .hover-wrapper {
+        transform: scale(0.4);
+        opacity: 0;
+        transform-origin: bottom left;
+        transition: .1s 0.3s linear transform, 0s 0.4s linear opacity;
+        display: block;
+        position: absolute;
+        bottom: 100%;
+        pointer-events: none;
+        z-index: 1; }
+        .editor .collab-cursor .inner-bar .hover-wrapper .inner-circle-big {
+          position: absolute;
+          height: 24px;
+          width: 24px;
+          border-radius: 24px;
+          background-color: #001996;
+          bottom: 0px;
+          left: -11px; }
+        .editor .collab-cursor .inner-bar .hover-wrapper .initials:after {
+          display: block;
+          position: absolute;
+          width: 20px;
+          height: 20px;
+          bottom: 2px;
+          left: -9px;
+          font-size: 12px;
+          font-weight: bold;
+          line-height: 20px;
+          text-align: center;
+          z-index: 4;
+          white-space: nowrap;
+          user-select: none; }
+        .editor .collab-cursor .inner-bar .hover-wrapper .name:after {
+          position: absolute;
+          display: block;
+          padding: 2px 12px;
+          border-radius: 2px;
+          color: white;
+          background-color: #777;
+          font-size: 12px;
+          line-height: 16px;
+          font-weight: 400;
+          bottom: 2px;
+          left: 6px;
+          white-space: nowrap;
+          z-index: 3;
+          user-select: none; }
+        .editor .collab-cursor .inner-bar .hover-wrapper .image:after {
+          position: absolute;
+          bottom: 2px;
+          left: -9px;
+          z-index: 5;
+          border-radius: 10px;
+          width: 20px;
+          height: 20px;
+          background-size: cover;
+          content: "";
+          max-width: none;
+          margin-top: 0px; }
+    .editor .collab-cursor:hover .hover-wrapper {
+      opacity: 1;
+      transform: scale(1);
+      transition: .1s linear transform, 0s 0s linear opacity; }
+  .editor figure {
+    text-align: center;
+    margin: 1em auto; }
+    .editor figure > * {
+      width: 100%;
+      pointer-events: none; }
+    .editor figure.ProseMirror-selectednode > * {
+      pointer-events: auto; }
+    .editor figure[data-align='left'] {
+      float: left;
+      margin: 0.5em 1.5em 0.5em 0em; }
+    .editor figure[data-align='right'] {
+      float: right;
+      margin: 0.5em 0em 0.5em 1.5em; }
+    .editor figure[data-size='1'] {
+      width: 1%; }
+    .editor figure[data-size='2'] {
+      width: 2%; }
+    .editor figure[data-size='3'] {
+      width: 3%; }
+    .editor figure[data-size='4'] {
+      width: 4%; }
+    .editor figure[data-size='5'] {
+      width: 5%; }
+    .editor figure[data-size='6'] {
+      width: 6%; }
+    .editor figure[data-size='7'] {
+      width: 7%; }
+    .editor figure[data-size='8'] {
+      width: 8%; }
+    .editor figure[data-size='9'] {
+      width: 9%; }
+    .editor figure[data-size='10'] {
+      width: 10%; }
+    .editor figure[data-size='11'] {
+      width: 11%; }
+    .editor figure[data-size='12'] {
+      width: 12%; }
+    .editor figure[data-size='13'] {
+      width: 13%; }
+    .editor figure[data-size='14'] {
+      width: 14%; }
+    .editor figure[data-size='15'] {
+      width: 15%; }
+    .editor figure[data-size='16'] {
+      width: 16%; }
+    .editor figure[data-size='17'] {
+      width: 17%; }
+    .editor figure[data-size='18'] {
+      width: 18%; }
+    .editor figure[data-size='19'] {
+      width: 19%; }
+    .editor figure[data-size='20'] {
+      width: 20%; }
+    .editor figure[data-size='21'] {
+      width: 21%; }
+    .editor figure[data-size='22'] {
+      width: 22%; }
+    .editor figure[data-size='23'] {
+      width: 23%; }
+    .editor figure[data-size='24'] {
+      width: 24%; }
+    .editor figure[data-size='25'] {
+      width: 25%; }
+    .editor figure[data-size='26'] {
+      width: 26%; }
+    .editor figure[data-size='27'] {
+      width: 27%; }
+    .editor figure[data-size='28'] {
+      width: 28%; }
+    .editor figure[data-size='29'] {
+      width: 29%; }
+    .editor figure[data-size='30'] {
+      width: 30%; }
+    .editor figure[data-size='31'] {
+      width: 31%; }
+    .editor figure[data-size='32'] {
+      width: 32%; }
+    .editor figure[data-size='33'] {
+      width: 33%; }
+    .editor figure[data-size='34'] {
+      width: 34%; }
+    .editor figure[data-size='35'] {
+      width: 35%; }
+    .editor figure[data-size='36'] {
+      width: 36%; }
+    .editor figure[data-size='37'] {
+      width: 37%; }
+    .editor figure[data-size='38'] {
+      width: 38%; }
+    .editor figure[data-size='39'] {
+      width: 39%; }
+    .editor figure[data-size='40'] {
+      width: 40%; }
+    .editor figure[data-size='41'] {
+      width: 41%; }
+    .editor figure[data-size='42'] {
+      width: 42%; }
+    .editor figure[data-size='43'] {
+      width: 43%; }
+    .editor figure[data-size='44'] {
+      width: 44%; }
+    .editor figure[data-size='45'] {
+      width: 45%; }
+    .editor figure[data-size='46'] {
+      width: 46%; }
+    .editor figure[data-size='47'] {
+      width: 47%; }
+    .editor figure[data-size='48'] {
+      width: 48%; }
+    .editor figure[data-size='49'] {
+      width: 49%; }
+    .editor figure[data-size='50'] {
+      width: 50%; }
+    .editor figure[data-size='51'] {
+      width: 51%; }
+    .editor figure[data-size='52'] {
+      width: 52%; }
+    .editor figure[data-size='53'] {
+      width: 53%; }
+    .editor figure[data-size='54'] {
+      width: 54%; }
+    .editor figure[data-size='55'] {
+      width: 55%; }
+    .editor figure[data-size='56'] {
+      width: 56%; }
+    .editor figure[data-size='57'] {
+      width: 57%; }
+    .editor figure[data-size='58'] {
+      width: 58%; }
+    .editor figure[data-size='59'] {
+      width: 59%; }
+    .editor figure[data-size='60'] {
+      width: 60%; }
+    .editor figure[data-size='61'] {
+      width: 61%; }
+    .editor figure[data-size='62'] {
+      width: 62%; }
+    .editor figure[data-size='63'] {
+      width: 63%; }
+    .editor figure[data-size='64'] {
+      width: 64%; }
+    .editor figure[data-size='65'] {
+      width: 65%; }
+    .editor figure[data-size='66'] {
+      width: 66%; }
+    .editor figure[data-size='67'] {
+      width: 67%; }
+    .editor figure[data-size='68'] {
+      width: 68%; }
+    .editor figure[data-size='69'] {
+      width: 69%; }
+    .editor figure[data-size='70'] {
+      width: 70%; }
+    .editor figure[data-size='71'] {
+      width: 71%; }
+    .editor figure[data-size='72'] {
+      width: 72%; }
+    .editor figure[data-size='73'] {
+      width: 73%; }
+    .editor figure[data-size='74'] {
+      width: 74%; }
+    .editor figure[data-size='75'] {
+      width: 75%; }
+    .editor figure[data-size='76'] {
+      width: 76%; }
+    .editor figure[data-size='77'] {
+      width: 77%; }
+    .editor figure[data-size='78'] {
+      width: 78%; }
+    .editor figure[data-size='79'] {
+      width: 79%; }
+    .editor figure[data-size='80'] {
+      width: 80%; }
+    .editor figure[data-size='81'] {
+      width: 81%; }
+    .editor figure[data-size='82'] {
+      width: 82%; }
+    .editor figure[data-size='83'] {
+      width: 83%; }
+    .editor figure[data-size='84'] {
+      width: 84%; }
+    .editor figure[data-size='85'] {
+      width: 85%; }
+    .editor figure[data-size='86'] {
+      width: 86%; }
+    .editor figure[data-size='87'] {
+      width: 87%; }
+    .editor figure[data-size='88'] {
+      width: 88%; }
+    .editor figure[data-size='89'] {
+      width: 89%; }
+    .editor figure[data-size='90'] {
+      width: 90%; }
+    .editor figure[data-size='91'] {
+      width: 91%; }
+    .editor figure[data-size='92'] {
+      width: 92%; }
+    .editor figure[data-size='93'] {
+      width: 93%; }
+    .editor figure[data-size='94'] {
+      width: 94%; }
+    .editor figure[data-size='95'] {
+      width: 95%; }
+    .editor figure[data-size='96'] {
+      width: 96%; }
+    .editor figure[data-size='97'] {
+      width: 97%; }
+    .editor figure[data-size='98'] {
+      width: 98%; }
+    .editor figure[data-size='99'] {
+      width: 99%; }
+    .editor figure[data-size='100'] {
+      width: 100%; }
+    .editor figure[data-align='full'] {
+      width: 100%; }
+    .editor figure figcaption {
+      opacity: 0.75;
+      padding: 2px 0px 5px; }
+  .editor .ProseMirror.read-only figure > * {
+    pointer-events: auto; }
+  @media only screen and (max-width: 720px) {
+    .editor figure {
+      float: none !important;
+      width: 100% !important; } }
+  .editor .file-icon {
+    font-family: Arial, Tahoma, sans-serif;
+    font-weight: 300;
+    display: inline-block;
+    width: 24px;
+    height: 32px;
+    background: #018fef;
+    position: relative;
+    border-radius: 2px;
+    text-align: left;
+    -webkit-font-smoothing: antialiased; }
+  .editor .file-icon::before {
+    display: block;
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-bottom-left-radius: 2px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #fff #fff rgba(255, 255, 255, 0.35) rgba(255, 255, 255, 0.35); }
+  .editor .file-icon::after {
+    display: block;
+    content: attr(data-type);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    font-size: 10px;
+    color: #fff;
+    text-transform: lowercase;
+    width: 100%;
+    padding: 2px;
+    white-space: nowrap;
+    overflow: hidden; }
+  .editor .file-icon-xs {
+    width: 12px;
+    height: 16px;
+    border-radius: 2px; }
+  .editor .file-icon-xs::before {
+    border-bottom-left-radius: 1px;
+    border-width: 3px; }
+  .editor .file-icon-xs::after {
+    content: "";
+    border-bottom: 2px solid rgba(255, 255, 255, 0.45);
+    width: auto;
+    left: 2px;
+    right: 2px;
+    bottom: 3px; }
+  .editor .file-icon-sm {
+    width: 18px;
+    height: 24px;
+    border-radius: 2px; }
+  .editor .file-icon-sm::before {
+    border-bottom-left-radius: 2px;
+    border-width: 4px; }
+  .editor .file-icon-sm::after {
+    font-size: 7px;
+    padding: 2px; }
+  .editor .file-icon-lg {
+    width: 48px;
+    height: 64px;
+    border-radius: 3px; }
+  .editor .file-icon-lg::before {
+    border-bottom-left-radius: 2px;
+    border-width: 8px; }
+  .editor .file-icon-lg::after {
+    font-size: 16px;
+    padding: 4px 6px; }
+  .editor .file-icon-xl {
+    width: 96px;
+    height: 128px;
+    border-radius: 4px; }
+  .editor .file-icon-xl::before {
+    border-bottom-left-radius: 4px;
+    border-width: 16px; }
+  .editor .file-icon-xl::after {
+    font-size: 24px;
+    padding: 4px 10px; }
+  .editor .file-icon[data-type=zip],
+  .editor .file-icon[data-type=rar] {
+    background: #acacac; }
+  .editor .file-icon[data-type^=doc] {
+    background: #307cf1; }
+  .editor .file-icon[data-type^=xls] {
+    background: #0f9d58; }
+  .editor .file-icon[data-type^=ppt] {
+    background: #d24726; }
+  .editor .file-icon[data-type=pdf] {
+    background: #e13d34; }
+  .editor .file-icon[data-type=txt] {
+    background: #5eb533; }
+  .editor .file-icon[data-type=mp3],
+  .editor .file-icon[data-type=wma],
+  .editor .file-icon[data-type=m4a],
+  .editor .file-icon[data-type=flac] {
+    background: #8e44ad; }
+  .editor .file-icon[data-type=mp4],
+  .editor .file-icon[data-type=wmv],
+  .editor .file-icon[data-type=mov],
+  .editor .file-icon[data-type=avi],
+  .editor .file-icon[data-type=mkv] {
+    background: #7a3ce7; }
+  .editor .file-icon[data-type=bmp],
+  .editor .file-icon[data-type=jpg],
+  .editor .file-icon[data-type=jpeg],
+  .editor .file-icon[data-type=gif],
+  .editor .file-icon[data-type=png] {
+    background: #f48c00; }
+  .editor [data-node-type='file'] {
+    width: 65%; }
+    .editor [data-node-type='file'] .details {
+      display: flex;
+      align-items: center;
+      text-align: left; }
+      .editor [data-node-type='file'] .details .extension {
+        text-transform: uppercase;
+        font-family: 'Courier', monospace;
+        font-weight: 600;
+        font-size: 1.5em; }
+      .editor [data-node-type='file'] .details .file-name {
+        flex-grow: 1;
+        flex-shrink: 1;
+        margin: 0em 1em; }
+        .editor [data-node-type='file'] .details .file-name a {
+          color: inherit; }
+          .editor [data-node-type='file'] .details .file-name a:hover {
+            cursor: pointer;
+            text-decoration: underline !important; }
+      .editor [data-node-type='file'] .details .file-size {
+        margin: 0em 1em; }
+  .editor table {
+    margin: 0;
+    max-width: 100%; }
+  .editor th, .editor td {
+    min-width: 1em;
+    border: 1px solid #ddd;
+    padding: 3px 5px; }
+  .editor table {
+    margin: 1em 0; }
+  .editor .tableWrapper {
+    margin: 1em 0; }
+    .editor .tableWrapper table {
+      margin: 0em; }
+  .editor th {
+    font-weight: bold;
+    text-align: left;
+    background-color: #F0F0F4; }
+
+.pub-body-component {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -moz-font-feature-settings: 'liga' on;
+  font-feature-settings: 'liga' on;
+  font-size: 20px;
+  min-height: 300px;
+  margin-top: 20px; }
+  .pub-body-component .editor.ProseMirror {
+    min-height: 150px; }
+    .pub-body-component .editor.ProseMirror h1#abstract:first-child {
+      text-transform: uppercase;
+      font-size: 1em;
+      font-weight: 500;
+      padding-top: 1em; }
+      .pub-body-component .editor.ProseMirror h1#abstract:first-child + p {
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 1em; }
+    .pub-body-component .editor.ProseMirror h1,
+    .pub-body-component .editor.ProseMirror h2,
+    .pub-body-component .editor.ProseMirror h3,
+    .pub-body-component .editor.ProseMirror h4,
+    .pub-body-component .editor.ProseMirror h5,
+    .pub-body-component .editor.ProseMirror h6 {
+      margin-bottom: 0.5em;
+      line-height: 1em;
+      font-weight: 500;
+      font-family: multi-display, -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Open Sans", "Helvetica Neue", sans-serif;
+      letter-spacing: 1px; }
+    .pub-body-component .editor.ProseMirror h1 {
+      font-size: 28px;
+      font-weight: 600; }
+    .pub-body-component .editor.ProseMirror h2 {
+      font-size: 26px; }
+    .pub-body-component .editor.ProseMirror h3 {
+      font-size: 24px; }
+    .pub-body-component .editor.ProseMirror h4 {
+      font-size: 22px; }
+    .pub-body-component .editor.ProseMirror h5 {
+      font-size: 20px; }
+    .pub-body-component .editor.ProseMirror h6 {
+      font-size: 18px; }
+    .pub-body-component .editor.ProseMirror * + h1,
+    .pub-body-component .editor.ProseMirror * + h2,
+    .pub-body-component .editor.ProseMirror * + h3,
+    .pub-body-component .editor.ProseMirror * + h4,
+    .pub-body-component .editor.ProseMirror * + h5,
+    .pub-body-component .editor.ProseMirror * + h6 {
+      margin-top: 1.4em; }
+    .pub-body-component .editor.ProseMirror p,
+    .pub-body-component .editor.ProseMirror li {
+      font-family: skolar-latin, Georgia, Cambria, "Times New Roman", Times, serif;
+      letter-spacing: 0.01rem;
+      font-weight: 400;
+      font-style: normal;
+      font-size: 1em;
+      line-height: 1.7;
+      letter-spacing: -0.003em;
+      margin: 0em 0em 1em;
+      word-break: break-word; }
+    .pub-body-component .editor.ProseMirror li {
+      margin: 0em; }
+      .pub-body-component .editor.ProseMirror li p {
+        margin: 0; }
+    .pub-body-component .editor.ProseMirror ul,
+    .pub-body-component .editor.ProseMirror ol {
+      padding-left: 1em;
+      margin: 0em 0em 1em; }
+      .pub-body-component .editor.ProseMirror ul ul,
+      .pub-body-component .editor.ProseMirror ul ol,
+      .pub-body-component .editor.ProseMirror ol ul,
+      .pub-body-component .editor.ProseMirror ol ol {
+        margin-bottom: 0em; }
+    .pub-body-component .editor.ProseMirror hr {
+      margin: 1em 0em; }
+    .pub-body-component .editor.ProseMirror pre {
+      background: rgba(0, 0, 0, 0.05);
+      padding: 20px;
+      box-shadow: none;
+      white-space: pre;
+      overflow: hidden;
+      overflow-x: scroll; }
+      .pub-body-component .editor.ProseMirror pre code {
+        white-space: pre;
+        background-color: transparent;
+        padding: 0em; }
+    .pub-body-component .editor.ProseMirror code {
+      background-color: rgba(27, 31, 35, 0.06);
+      border-radius: 2px;
+      font-size: 16px;
+      margin: 0;
+      padding: 0.2em 0.4em; }
+    .pub-body-component .editor.ProseMirror blockquote {
+      line-height: inherit;
+      font-size: 1em;
+      margin: 0 0 1em;
+      border-left: solid 4px rgba(181, 181, 181, 0.5);
+      padding: 0 1em; }
+    .pub-body-component .editor.ProseMirror figure,
+    .pub-body-component .editor.ProseMirror .file {
+      font-size: 15px; }
+    .pub-body-component .editor.ProseMirror figcaption {
+      font-size: 0.9em; }
+      .pub-body-component .editor.ProseMirror figcaption p {
+        margin-bottom: 0em;
+        line-height: 1;
+        font-family: -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Open Sans", "Helvetica Neue", sans-serif; }
+    .pub-body-component .editor.ProseMirror *:first-child:not(.discussion-thread) {
+      margin-top: 0em; }
+    .pub-body-component .editor.ProseMirror .insert-popup {
+      font-size: 15px; }
+  .pub-body-component .bp3-callout.working-draft {
+    display: flex;
+    align-items: center; }
+    .pub-body-component .bp3-callout.working-draft span {
+      flex-grow: 1;
+      flex-shrink: 1; }
+  .pub-body-component .permanent {
+    background-color: #ffc940; }
+
+@media print {
+  .pub-body-component {
+    font-size: 14px; }
+    .pub-body-component h1,
+    .pub-body-component h2,
+    .pub-body-component h3,
+    .pub-body-component h4,
+    .pub-body-component h5,
+    .pub-body-component h6 {
+      page-break-after: avoid; } }
+
+.pub-body-alert .error-time {
+  font-weight: bold; }
+
+.csl-bib-body,
+.csl-entry {
+  display: inline; }
+
+.pub-body-component {
+  margin-top: 0 !important; }
+  .pub-body-component .editor.ProseMirror .pub-notes ol > li {
+    list-style-position: inside;
+    margin: inherit; }
+    .pub-body-component .editor.ProseMirror .pub-notes ol > li:target {
+      background: cornsilk; }
+    .pub-body-component .editor.ProseMirror .pub-notes ol > li p:last-child {
+      display: inline; }
+    .pub-body-component .editor.ProseMirror .pub-notes ol > li .return-link {
+      font-size: 0.75em; }
+
+section.cover {
+  font-family: multi-display, -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Open Sans", "Helvetica Neue", sans-serif; }
+  section.cover .title {
+    margin-top: 0;
+    font-size: 3em; }
+  section.cover .byline h3 {
+    margin: 0; }
+    section.cover .byline h3 span.name {
+      white-space: nowrap;
+      display: inline-block;
+      margin-right: 0.2em; }
+  section.cover .byline h5 {
+    margin: 0;
+    margin-top: 0.5em; }
+    section.cover .byline h5 span.affiliation {
+      white-space: nowrap;
+      display: inline-block;
+      margin-right: 0.2em; }
+  section.cover .details > *:not(:last-child) {
+    margin-bottom: 7px; }
+  section.cover .title,
+  section.cover .byline,
+  section.cover .details {
+    margin-bottom: 30px !important; }
+
+@media screen {
+  body > * {
+    max-width: 50em;
+    margin: 0 auto; }
+    body > *.pub-body-component {
+      font-size: initial !important; } }
+
+@media print {
+  /* Baseline page styles */
+  @page {
+    size: Letter;
+    @top-left {
+      color: #666;
+      font-size: 10px;
+      font-family: multi-display, -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Open Sans", "Helvetica Neue", sans-serif;
+      content: string(community-and-collection); }
+    @top-right {
+      color: #666;
+      font-size: 10px;
+      font-family: multi-display, -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Open Sans", "Helvetica Neue", sans-serif;
+      content: string(title); }
+    @bottom-center {
+      color: #666;
+      font-size: 10px;
+      font-family: multi-display, -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Open Sans", "Helvetica Neue", sans-serif;
+      content: counter(page); } }
+  /* Avoid being the last element on the page */
+  h1,
+  h2,
+  h3,
+  h4 {
+    break-after: avoid; }
+  tr,
+  th {
+    break-inside: avoid;
+    max-height: 90vh;
+    overflow-y: hidden; }
+  figure {
+    break-inside: avoid;
+    display: flex;
+    flex-direction: column;
+    max-height: 800px; }
+    figure img, figure video {
+      break-inside: avoid;
+      width: 100%;
+      min-height: 0;
+      max-height: 100%;
+      flex-shrink: 1;
+      object-fit: contain; }
+  figcaption {
+    font-size: 10px;
+    color: #555;
+    flex-shrink: 0; }
+  table {
+    font-size: 12px;
+    border-collapse: collapse;
+    table-layout: fixed;
+    width: 100%;
+    overflow: hidden; }
+  table,
+  tr,
+  th,
+  td {
+    border: 1px #ccc solid;
+    padding: 5px; }
+  th {
+    font-weight: bold;
+    text-align: left;
+    background-color: #f0f0f4; }
+  td,
+  a {
+    word-break: break-word; }
+  a.footnote {
+    vertical-align: super;
+    font-size: 10px; }
+  [data-node-type='math-block'] {
+    font-size: 16px;
+    break-inside: avoid; }
+  section.cover {
+    page: cover; }
+  @page cover {
+    @top-left {
+      content: ''; }
+    @top-right {
+      content: ''; }
+    @bottom-center {
+      content: ''; } }
+  .community-and-collection {
+    string-set: community-and-collection content(); }
+  .title {
+    string-set: title content(); } }
+</style></head><body><section class="cover"><h3 class="community-and-collection">Journal of Design and Science</h3><h1 class="title">Age of Entanglement</h1><div class="byline"><h3><span class="name">Neri Oxman</span></h3></div><div class="details"><div><strong>Published on: </strong> Jan 13, 2016</div><div><strong>Updated on:</strong> Jul 15, 2019</div><div><strong>DOI:</strong> 10.21428/7e0583ad</div></div></section><div class="pub-body-component"><div class="editor Prosemirror"><p>To every age, a relic: a loom, an automobile, the PC, a 3D printer. L’Encyclopédie<a href="#fn-1" id="fn-1-return" data-node-type="footnote" data-value="Developing Musical Intuitions: A Project-Based Introduction to Making and Understanding Music." date-structured-value="" data-count="1" class="footnote">1</a> was its period’s signpost, cataloguing and concretizing the boundaries between the disciplines, which emerged from the “long eighteenth century” of the Enlightenment. For the next quarter of a millennium, we remained indoctrinated to the shibboleths of this relic, operating within discrete silos-of-thought. At the dawn of the new millennium, the meme “antidisciplinary” appeared, yanking us out of Aristotle’s shadow and into a new ‘Age of Entanglement.’ <a href="#fn-2" id="fn-2-return" data-node-type="footnote" data-value="The Age of Digital Entanglement. Scientific American. 303, 93." date-structured-value="" data-count="2" class="footnote">2</a><sup>,</sup> <a href="#fn-3" id="fn-3-return" data-node-type="footnote" data-value="The Age of Digital Entanglement. Scientific American. 303, 93." date-structured-value="" data-count="3" class="footnote">3</a></p><p>This essay proposes a map for four domains of creative exploration—Science, Engineering, Design and Art—in an attempt to represent the antidisciplinary hypothesis: that knowledge can no longer be ascribed to, or produced within, disciplinary boundaries, but is entirely entangled. The goal is to establish a tentative, yet holistic, cartography of the interrelation between these domains, where one realm can incite (r)evolution inside another; and where a single individual or project can reside in multiple dominions. Mostly, this is an invitation to question and to amend what is being proposed.</p><h1 id="maeda-finds-gold">Maeda finds Gold</h1><p>All roads lead to the “Bermuda Quadrilateral.”<a href="#fn-4" id="fn-4-return" data-node-type="footnote" data-value="The Art Instinct: Beauty, Pleasure, and Human Evolution." date-structured-value="" data-count="4" class="footnote">4</a> In 2007, John Maeda proposed a diagram under this name, based on the “Rich Gold matrix.” The map—a rectangular plot—was parceled into four quadrants, each devoted to a unique view by which to read, and act upon, the world: Science, Engineering, Design and Art. According to Maeda, to each plot a designated mission: to Science, exploration; to Engineering, invention; to Design, communication; to Art, expression. Describing the four “hats” of creativity, Rich Gold had originally drawn the matrix-as-cartoon to communicate four discrete embodiments of creativity and innovation. Mark your mindset, conquer its little acre, and settle in. Gold’s view represents four ways-of-being that are distinctly different from one another, separated by clear intellectual boundaries and mental dispositions. Like the Four Humors, each is regarded as its own substance, to each its content and its countenance. Stated differently, if you’re a citizen in one, you’re a tourist in another.</p><p>But how can we become constant travelers within a border-free, and lingo-legible ‘intellectual Pangea?&#x27; How can we traverse a cerebral supercontinent, where the analog of world citizenship governs our identity as thinking—and creating—beings? How can we navigate an atlas that is charted not for four hats, but for one pair of shoes, and with which we can—including some luck and a quantum leap-of-faith—inhabit multiple places at once? Can a scientist invent better solutions than an engineer? Is an artist’s mindset really all that different from a scientist’s? Are they simply two ways of operating in the world that are complementary and intertwined? Or, when practicing art, is perhaps what truly counts less the art form and more one’s (way of) being? Ultimately: is there a way to understand the culture of making which transcends a two-dimensional Euclidean geometry—four plots to match four hats—to a more holistic, integrative and globe-like approach?</p><h1 id="caving">Caving</h1><p>In his recent film, Particle Fever (2014), Mark Levinson documents the first round of experiments at the Large Hadron Collider (LHC), investigating the origins of matter. The film opens with the initial firings of the LHC, designed to recreate the conditions associated with the Big Bang. It closes with prehistoric cave paintings, and an intriguing assertion by Savas Dimopoulos on the connection between Art and Science: “The things that are least important for our survival are the very things that make us human.” Both Art and Science can be understood as human needs to express the world around us. Both require suspension of disbelief, offering speculations about our physical and immaterial reality prior to proof. And both—as has been the case since the painting of the Chauvet Cave some 40,000 years ago—have no rules and no boundaries. The artists who produced these paintings did so in order to first face, then make sense of, their reality. We do Science with precisely the same motivation. Similarly nebulous are the boundaries between Design and both Art and Engineering. Design, in its critical embodiment (Critical Design), operates through speculation, devising unforeseen strategies that challenge preconceived assumptions about how we use, and live within, the built environment. In its affirmative embodiment (Affirmative Design), Design operates by offering practical, and often utilitarian, solutions that can be rapidly deployed. The former carries the mentality of Art, while the borders between the latter and Engineering are at best difficult to parse. Similar vagaries exist, too, between Science/Design, Engineering/Art, and Science/Engineering. It is likely to assume that if what you are designing carries meaning and relevance, you are not operating within a single, distinct domain.</p><p>How can we re-occupy the four corners of the “Bermuda Quadrilateral” as transitory embodiments of creativity and innovation? Better yet, how can we travel them, or even co-exist within them, in a way that is at once meaningful and productive? Can operating within one domain generate a kind of ‘creative energy’ that enables the easy transition to another?</p><h1 id="creative-energy-creatp">Creative Energy (CreATP)</h1><p>The Krebs Cycle is a metabolic pathway made up of chemical reactions. One of the earliest established components of cellular metabolism, all breathing organisms could not exist without it. Its outcome, through the oxidation of nutrients, is the production of chemical energy, carried throughout the cell in the form of Adenosine Triphosphate (ATP). ATP can therefore be considered a molecular unit of currency for energy transfer. The Krebs Cycle is akin to a metabolic clock that first generates, then consumes, then regenerates currency in the form of ATP over time. Crudely expressed: good metabolism will make you constantly rich. By the same token, can intellectual digestion—the kind that demands you shift views and perspectives—make you constantly intellectually rich?</p><p>The Krebs Cycle of Creativity (KCC) is a map that describes the perpetuation of creative energy (creative ATP or ‘CreATP’), analogous to the Krebs Cycle proper. In this analogy, the four modalities of human creativity—Science, Engineering, Design and Art—replace the Krebs Cycle’s carbon compounds. Each of the modalities (or ‘compounds‘) produces ‘currency’ by transforming into another:</p><figure data-node-type="image" data-size="100" data-align="center" data-url="https://assets.pubpub.org/93uq1idg/21508273276775.png"><img src="https://assets.pubpub.org/93uq1idg/21508273276775.png" alt=""/><figcaption><div></div></figcaption></figure><p>The role of Science is to explain and predict the world around us; it ‘converts’ information into knowledge. The role of Engineering is to apply scientific knowledge to the development of solutions for empirical problems; it ‘converts’ knowledge into utility. The role of Design is to produce embodiments of solutions that maximize function and augment human experience; it ‘converts’ utility into behavior. The role of Art is to question human behavior and create awareness of the world around us; it ‘converts’ behavior into new perceptions of information, re-presenting the data that initiated the KCC in Science. At this ‘Cinderella moment’—when the hands of the KCC strike midnight—new perception inspires new scientific exploration. For example, in As Slow as Possible, John Cage transports the listener into a state where space and time are stretched, offering a personal interpretation of time dilation and questioning the nature of space-time itself.</p><p>The KCC is designed as a circle with the four modalities of creativity preserved in their original location from the “Rich Gold matrix.” As you transition from one into the other, you generate and spend currency in the form of intellectual energy, or CreATP. Science produces knowledge that is used by engineers. Engineering produces utility that is used by designers. Designers produce changes in behavior that are perceived by artists. Art produces new perceptions of the world, thereby granting access to new information in and about it, and inspiring new scientific inquiry. As in the cumulative Aramaic song, Chad Gadya, there is repetition, continuity and change. Some content is generated, other content is consumed, some is released and new content is formed.</p><h1 id="the-clock-the-microscope-the-compass-and-the-gyroscope">The Clock, the Microscope, the Compass and the Gyroscope</h1><p>As a speculative map, the KCC is intentionally abstract. In hopes of eliciting debate and revision, its many meanings can be read through a multiplicity of lenses.</p><h2 id="kcc-as-clock">KCC as Clock</h2><p>The KCC can be read as a clock like the Krebs Cycle itself. But unlike the Krebs Cycle, the CreATP pathway is bidirectional. In this clock, direction can be reversed. Time can also stand still (by remaining in the same location on the circle), it can ‘bend’ (by introducing geometrical changes, e.g. from a circle to an ellipse), or it can be foreshortened (by introducing topological changes, e.g. from a circle to a figure eight or a spiral). Furthermore, if you generate excess energy, you can skip domains—from Science to Design, bypassing Engineering—and thereby ‘time travel.’ We get boosts of CreATP for free when we are good at what we do, when we excel in integration. Good Design, for example, is good exploration: it questions certain belief systems—physical and immaterial—about the world. Then it releases some embodiments of these speculations into the world, contributing to the build-up of what we know as culture. If done well, good Design can establish new basic Science without going through Art. By example, Buckminster Fuller’s geodesic domes (“buckyballs”) helped scientists visualize the molecule with the formula C60, whose related class of molecules were named “fullerenes.”</p><h2 id="kcc-as-microscope">KCC as Microscope</h2><p>The KCC, in its current form, does not yet express transitions in physical scale. But, of course, you can consider the four domains as four objective lenses of an imaginary microscope through which to view, and act upon, the world. The way we view our environment, and interact within it, is ultimately dependent on the lens through which we choose to see it. Choosing is no innocent act. A material scientist will generally explore the physical composition of matter through the lens of properties. A biologist, however, looks at the world not through the lens of properties, but rather through the lens of function. Both live in the same reality, but experience it altogether differently, and therefore act upon it in a singular way. If they could see both views simultaneously, they would link properties and behaviors.</p><h2 id="kcc-as-compass">KCC as Compass</h2><p>The KCC can be read as a compass rose, north-to-south and east-to-west. The north-to-south axis leads from sky to earth: from ‘information’ produced by Science and Art in the hemisphere of ‘perception,’ to ‘utility’ produced by Design and Engineering in the hemisphere of ‘production.’ The farther north, the more theoretical (or philosophical) the regime. The farther south, the more applied (or economic) the regime. The north marks the climax of human exploration into the unknown. The south marks the products and outcomes associated with new creative solutions and deployments based on exploration. The east-to-west axis leads from nature to culture: from ‘knowledge’ produced by Science and Engineering in the hemisphere of ‘nature,’ to ‘behaviors’ produced by Art and Design in the hemisphere of ‘culture.’ Along this axis, one travels from understanding—describing and predicting phenomena within the physical world—to creating new ways of using and experiencing it.</p><h2 id="kcc-as-gyroscope">KCC as Gyroscope</h2><p>Most provocatively, the KCC can be understood as a plan-projection of a gyroscope, measuring or maintaining creative orientation. This analogy imagines a three-dimensional globe transcending ‘flatland,’ where at the very top(s)—the poles of the diagram—all modalities collide into one, big nebula. A Big Bang where all of this actually begins. Complete entanglement.</p><h1 id="holes-and-hacks">Holes and Hacks</h1><p>As with any speculative proposition, particularly when expressed graphically, there are many intellectual holes and cracks.</p><h2 id="from-art-to-science-a-cinderella-moment">From Art to Science: a Cinderella Moment</h2><p>Some claim—and even tittle-tattle the point—that the passage from Art to Science is far-fetched at best, and forced at worst. After all, Picasso and Einstein didn’t know each other (the myth of an impromptu meeting in 1904 at Montmartre’s Le Lapin Agile aside). But does it matter? Both questioned the relationship between space and time, arriving at expressions speculating on their relationship in deep and meaningful ways. Both were archetypes of Modernism, co-existing in an age that questioned the culture of nature…and the nature of culture. Granted, my determination to posit the completed circle—to assert the continuity of the KCC—may be seen as naïve, or even sophomoric. Please assume the former, and suspend disbelief. After all, only through faith (will) we leap. That is to say: the ability to create sufficient leverage to leap from Art to Science is the ultimate force multiplier. It’s where potential energy is converted to kinetic energy, a posse ad esse.</p><h2 id="culture-is-nature-is-culture">Culture is Nature is Culture</h2><p>The nature-culture divide is every anthropologist’s bread-and-butter. And the question whether these two entities can be perceived, expressed and acted upon in coalescence carries tension in the KCC’s extrapolated poles. If “nature” is described as “anything that supports life,” and if life “cannot be sustained without culture,”<a href="#fn-5" id="fn-5-return" data-node-type="footnote" data-value="The Dawn of the Entanglement. Is the Internet Changing the Way You Think?: The Net’s Impact on Our Minds and Future (Edge Question Series)." date-structured-value="" data-count="5" class="footnote">5</a> the two belief systems collapse into singularity. In this singularity, Nature claims the infrastructure of civilization and, equally so, culture now enables the design of Nature herself.</p><h2 id="global-citizenship-at-the-cost-of-intellectual-vernacular">Global Citizenship at the Cost of Intellectual Vernacular</h2><p>Is intellectual flexibility more worthy than it is profitable? Is global intellectual citizenship a road to perdition? Might simultaneously inhabiting all four domains, or all the silos of enlightenment, entail a loss in disciplinary expertise and research proficiency? Perhaps. Still, you can’t have one without the other: central (disciplinary) vision will get you far, but peripheral (antidisciplinary) vision will get you farther. So while the ability to occupy all four domains simultaneously requires the kind of expertise that sacrifices expertise, it is a sine qua non for a worthy spin.</p><h1 id="antonelli-gets-knotty">Antonelli gets ‘Knotty’</h1><p>A mathematical knot is not what you think. It is not the kind of knot you would use to yoke your shoes or tie a tie. In knot theory, knots are closed loops: they have no ends at which they can be unknotted. It is this very concept that inspired Paola Antonelli to coin the term “Knotty Objects.”</p><p>So what is a Knotty Object?</p><p>One can perceive the world as a singularity, i.e., top down through the lens of a particular profession or plot on the “Rich Gold matrix.” But one can also view the world bottom up, object first. Knotty objects are bigger than the sum of their parts. Viewing them fuses multiple perspectives, thereby generating an expanded, more profound, vision of the world. Knotty objects are so knotty that one can no longer disentangle the disciplines or the disciplinary knowledge that contributed to their creation. If in the Age of Entanglement, we understand objects from a manifold of vantages, Knotty Objects force awareness of their condition through a multivalent approach.</p><p>During the Knotty Objects summit at the MIT Media Lab (July 2015), Paola Antonelli, Kevin Slavin and I focused on four knotty objects-as-archetypes: a phone, a brick, a bitcoin and a steak. Each posed a particular context for their knotting: communication, the built environment, commerce and gastronomy. But each also begged to be explored through many realms.</p><p>Take the steak for example. Its ‘design’—whether it is prepared using the animal as source, or is produced from scratch in a lab—embodies a difficult assortment of technical skill and moral contradiction. While bullfighting beef is ironically considered the most ecological meat in the world, its synthetic equivalent is just as ethically troubling: engineering in vitro meat requires market-driven environmental sacrifices that are just as Homeric as the killing of a sacred bull. Whichever way you look at it, there is no escaping guilt. In this knotty universe, we are still cavemen, controlled by our pre-established moral code and views.</p><p>The creation of knotty objects is just as knotty. In fact, the techniques to create them, as well as their ultimate physical expression, are intellectual mirror images of each other: the process reflects the knottiness of their related products. Bluntly, a knotty creator must simultaneously occupy all four domains of the KCC, and bring together insights that are as profoundly scientific as they are artistically insightful.</p><p>What is so special about these objects is that their creation—their science, their engineering, their design and their projected location in culture—is not a discrete process; it is nonlinear and cannot be unknotted. When it is considered successful, a knotty object has the power not only to question the way we live, but also to change material practice, to question manufacturing protocols and to completely redefine social constructs. This is a very exciting time for creators of the built environment, a time when the disciplines are knotted within contexts that are at once technologically savvy and culturally sensitive. The knot then becomes the ultimate form of entanglement.</p><p>Knotty Objects are antidisciplinary. Q.E.D.</p><h1 id="itos-pangea">Ito’s Pangea</h1><p>Since the Age of Enlightenment, the realms of human exploration and expression have been coddled into silos that are self-reliant and often self-referential, both in means and in mindset. But if you can smash protons down a seventeen-mile straw at nearly the speed of light, you’ve earned the right to question the category of gravity. Theoretical physics alone just isn’t enough: it’s an entangled proposition to a truly BIG question, spawned by an entangled state (literally and metaphorically).</p><p>“Quantum entanglement” denotes the moment a few or more particles interrelate such that the quantum state of any particle cannot be described alone, only all the particles en masse. If Enlightenment was the salad, Entanglement is the soup. In the Age of Entanglement it becomes impossible to discern one ingredient from another. Taxonomies are defunct; disciplinary walls dissolve. At the extrapolated summit of the KCC as Gyroscope, all silos coalesce (back) into the Pangea of information.</p><p>Due to the boon of new fabrication technologies, the scales of synthesis are approaching the already micro scales of analysis, and ‘writing’ the world is thereby becoming as granular as ‘reading’ it. Consider for example the transition of information from an MRI scan to a 3D print in the production of a prosthetic limb with graded properties that match and respond to a particular person’s physiology. Or a wearable micro-biome, designed at a scale that can filter your gut. Just like the cave painters, it is through creative expression that we can re-enter (or re-read) the same view from a different perspective. Communication protocols between and across such perspectives become explicit because, as in the Krebs Cycle, synthesis and degradation are interchangeable. The instant when units of work and units of perception coalesce becomes a thrilling creative moment<a href="#fn-6" id="fn-6-return" data-node-type="footnote" data-value="The Dawn of the Entanglement. Is the Internet Changing the Way You Think?: The Net’s Impact on Our Minds and Future (Edge Question Series)." date-structured-value="" data-count="6" class="footnote">6</a> for the free souls and the free soloists in the Age of Entanglement.</p><p>The MIT Media Lab — ‘Ito’s Pangea,’ or the ‘Negroponte supercontinent’ — can entangle precisely because it makes the stuff that makes the KCC spin: media. And I don’t mean news, or electronics, or digital media, not even social media. But that which possesses one world: “each hath one, and is one.”</p><h1 id="acknowledgements">Acknowledgements</h1><p>The phrase “Age of Entanglement” is attributed to my good friend and colleague Danny Hillis, who has explored similar phrasing in.<a href="#fn-7" id="fn-7-return" data-node-type="footnote" data-value="Thinking in Indian. A John Mohawk Reader." date-structured-value="" data-count="7" class="footnote">7</a></p><p></p><p></p><p></p><div class="pub-notes"><h1>Footnotes</h1><ol><li id="fn-1"><span class="pub-note-content-component"><span></span><span>Developing Musical Intuitions: A Project-Based Introduction to Making and Understanding Music.</span></span> <a href="#fn-1-return" class="return-link">↩</a></li><li id="fn-2"><span class="pub-note-content-component"><span></span><span>The Age of Digital Entanglement. Scientific American. 303, 93.</span></span> <a href="#fn-2-return" class="return-link">↩</a></li><li id="fn-3"><span class="pub-note-content-component"><span></span><span>The Age of Digital Entanglement. Scientific American. 303, 93.</span></span> <a href="#fn-3-return" class="return-link">↩</a></li><li id="fn-4"><span class="pub-note-content-component"><span></span><span>The Art Instinct: Beauty, Pleasure, and Human Evolution.</span></span> <a href="#fn-4-return" class="return-link">↩</a></li><li id="fn-5"><span class="pub-note-content-component"><span></span><span>The Dawn of the Entanglement. Is the Internet Changing the Way You Think?: The Net’s Impact on Our Minds and Future (Edge Question Series).</span></span> <a href="#fn-5-return" class="return-link">↩</a></li><li id="fn-6"><span class="pub-note-content-component"><span></span><span>The Dawn of the Entanglement. Is the Internet Changing the Way You Think?: The Net’s Impact on Our Minds and Future (Edge Question Series).</span></span> <a href="#fn-6-return" class="return-link">↩</a></li><li id="fn-7"><span class="pub-note-content-component"><span></span><span>Thinking in Indian. A John Mohawk Reader.</span></span> <a href="#fn-7-return" class="return-link">↩</a></li></ol></div></div></div></body></html>

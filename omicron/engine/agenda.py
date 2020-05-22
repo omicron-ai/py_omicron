@@ -1,4 +1,4 @@
-from omicron.utilities import AtomicCounter
+from omicron.utils.utilities import AtomicCounter
 from collections import OrderedDict
 
 

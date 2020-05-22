@@ -1,9 +1,7 @@
 from collections import OrderedDict
-from omicron.constants import SRC_PATH
-from omicron.nlp import get_tokens, get_topics
+from omicron.utils.constants import SRC_PATH
+from omicron.utils.nlp import get_tokens, get_topics
 import json
-from pprint import pprint
-import pickle
 
 header = ['turn', 'agent', 'text', 'tokens', 'intent', 'semantic_slot',]
 
@@ -29,7 +27,7 @@ def process_data(file_dir: str = SRC_PATH, verbose: bool = False):
 
 
 def write_files(_data, verbose: bool = False):
-    from omicron.constants import JSON_PATH, SEM_PATH
+    from omicron.utils.constants import JSON_PATH, SEM_PATH
     with open(JSON_PATH, 'w') as json_file:
         json.dump(_data, json_file, indent=2)
 
@@ -46,7 +44,7 @@ def write_files(_data, verbose: bool = False):
 
 
 def build_dialog(_data, _to_file: bool = False):
-    from omicron.constants import A0, A1, COMPOSITE
+    from omicron.utils.constants import A0, A1, COMPOSITE
 
     def _input_turn(_turn):
         input_turn = OrderedDict({"turn": _turn["turn"],
