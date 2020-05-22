@@ -2,9 +2,13 @@ import uuid
 
 from omicron import OMICRON_NAMESPACE
 from omicron.utils.utilities import AtomicCounter
-
+from enum import Enum
 
 class Signal:
+
+    class Status(Enum):
+        RECEIVED = "RECEIVED"
+        CONSUMED = "CONSUMED"
 
     def __init__(self, seed):
         self.id = uuid.uuid5(OMICRON_NAMESPACE, f"{seed}")
