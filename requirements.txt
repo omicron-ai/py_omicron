@@ -1,3 +1,3 @@
-nltk
-stanza
-networkx
+nltk==3.5
+stanza==1.0.1
+networkx==2.4
