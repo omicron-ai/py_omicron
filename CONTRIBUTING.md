@@ -36,11 +36,11 @@ Omicron is intentionally very modular. Nearly every agent element is a modular m
 
 The agents agenda is processed by an AttentionMechanism, which is a scheduler algorithm that assigns signals to their respective Mechanisms. 
 
-![agent architecture](https://raw.githubusercontent.com/ielm/omicron/master/.github/IMAGES/agentarch.png)
+![agent architecture](https://raw.githubusercontent.com/omicron-ai/omicron/master/resources/images/architecture/agentarch.png)
 
 The agents memory is (for now) composed of two primary spaces: Semantic and Situational. 
 
-![agent memory](https://raw.githubusercontent.com/ielm/omicron/master/.github/IMAGES/memory.png)
+![agent memory](https://raw.githubusercontent.com/omicron-ai/omicron/master/resources/images/architecture/memory.png)
 
 All agent mechanisms follow the following mechanism conventions.
 
