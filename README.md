@@ -1,6 +1,6 @@
-<h2 align="center">Omicron: A semantically-driven language generation system</h2>
+<h2 align="center">Omicron: A multi-modal agent development framework</h2>
 
-Omicron is a semantically-driven language generation system that focuses on collaborative dialog.  
+Omicron is an agent framework for developing multi-modal agents. 
  
 This is an ongoing project with Dr. Tomek Strzalkowski, Dr. Hui Su, and Albert Chang. 
 
