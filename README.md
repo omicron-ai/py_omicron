@@ -23,7 +23,6 @@ Semantic memory is the top level knowledge class, under which all  is stored and
 Situational memory is the top level context class, under which all contextual information is stored and maintianed. 
 
 
-
 ## Contributing
 
 Please see [Contributing to Omicron](CONTRIBUTING.md) for information.
