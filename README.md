@@ -1,37 +1,25 @@
 <h2 align="center">Omicron: A multi-modal agent development framework</h2>
 
-Omicron is an agent framework for developing multi-modal agents. 
- 
-This is an ongoing project with Dr. Tomek Strzalkowski, Dr. Hui Su, and Albert Chang. 
+Omicron is an agent framework for developing multi-modal agents. It is made up of a core agent object, with an agenda, memory, and a set of core mechanisms for agenda processing and memory parsing. All other agent elements are developed as mechanisms.
+
+<h3>Mechanisms</h3>
+
+Omicron is intentionally very modular. Nearly every agent element is a modular mechanism, even fundamental things like perceptors for signal input and attention. Every agent function inherits from a base Mechanism class and have similarities, but is ultimately grouped under one of three categories: InputMechanism, OutputMechanism, or InternalMechanism.
+
+The agents agenda is processed by an AttentionMechanism, which is a scheduler algorithm that assigns signals to their respective Mechanisms.
+
+The agents memory is processed by a KnowledgeMechanism, which is a simple reasoner that searches, parses, and adds to the agent memory. 
+
+<h3>Memory</h3>
+
+The agents memory is (for now) composed of two primary spaces: Semantic and Situational.
+
+Semantic memory is the top level knowledge class, under which all  is stored and maintained. 
+
+Situational memory is the top level context class, under which all contextual information is stored and maintianed. 
 
 
-###### [Dr. Tomek Stralkowski](https://faculty.rpi.edu/node/36316 "Dr. Tomek Strzalkowski") | [Dr. Hui Su](https://cisl.rpi.edu/people/faculty/hui-su "Dr. Hui Su") | [Albert Chang](https://cisl.rpi.edu/people/students/albert-chang "Albert Chang") | [Ivan Leon](https://ivanleon.net "Ivan Leon")
-###### [CISL@RPI](https://cisl.rpi.edu/ "CISL")
 
 ## Contributing
 
 Please see [Contributing to Omicron](CONTRIBUTING.md) for information.
-
-### References
-```bibtex
-@inproceedings{qi2020stanza,
-    title={Stanza: A {Python} Natural Language Processing Toolkit for Many Human Languages},
-    author={Qi, Peng and Zhang, Yuhao and Zhang, Yuhui and Bolton, Jason and Manning, Christopher D.},
-    booktitle = "Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics: System Demonstrations",
-    year={2020}
-}
-@article{wang2019persuasion,
-     title={Persuasion for Good: Towards a Personalized Persuasive Dialogue System for Social Good},
-     author={Wang, Xuewei and Shi, Weiyan and Kim, Richard and Oh, Yoojung and Yang, Sijia and Zhang, Jingwen and Yu, Zhou},
-     journal={arXiv preprint arXiv:1906.06725},
-     year={2019}
-}
-@misc{li2019endtoend,
-    title={End-to-End Trainable Non-Collaborative Dialog System},
-    author={Yu Li and Kun Qian and Weiyan Shi and Zhou Yu},
-    year={2019},
-    eprint={1911.10742},
-    archivePrefix={arXiv},
-    primaryClass={cs.CL}
-}
-```
